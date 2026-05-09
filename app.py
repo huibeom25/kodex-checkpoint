@@ -1718,6 +1718,35 @@ def render_checklist():
 
     phone_header()
 
+    st.markdown(
+        """
+        <style>
+        /* 체크리스트 페이지 질문 글자 */
+        .question-title {
+            color: #111827 !important;
+        }
+
+        .question-guide {
+            color: #111827 !important;
+        }
+
+        /* 체크리스트 라디오 선지 글자 */
+        div[data-testid="stRadio"] label,
+        div[data-testid="stRadio"] label *,
+        div[data-testid="stRadio"] p,
+        div[data-testid="stRadio"] span {
+            color: #111827 !important;
+        }
+
+        /* 선택지 카드 배경은 흰색으로 고정 */
+        div[data-testid="stRadio"] label {
+            background: #FFFFFF !important;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+    
     page_title_bar("KODEX CHECKPOINT", default_back="home")
 
     html(f"""
