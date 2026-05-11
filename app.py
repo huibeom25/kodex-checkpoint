@@ -4,6 +4,7 @@ from datetime import datetime
 import pandas as pd
 import streamlit as st
 
+
 # =========================
 # 0. 기본 설정
 # =========================
@@ -13,6 +14,7 @@ st.set_page_config(
     layout="centered",
     initial_sidebar_state="collapsed",
 )
+
 
 # =========================
 # 1. CSS
@@ -40,6 +42,9 @@ html, body, [class*="css"] {
     visibility: hidden;
 }
 
+/* =========================
+   모바일 앱 프레임
+========================= */
 .phone-body {
     background:#F4F6FA;
     border:1px solid #DDE5F2;
@@ -126,6 +131,9 @@ html, body, [class*="css"] {
     font-weight:900;
 }
 
+/* =========================
+   공통 카드 / 텍스트
+========================= */
 .check-card {
     background:linear-gradient(135deg, #EAF2FF 0%, #FFFFFF 100%);
     border:1.5px solid #C8DBFF;
@@ -257,6 +265,9 @@ html, body, [class*="css"] {
     text-align:right;
 }
 
+/* =========================
+   체크리스트
+========================= */
 .progress-big {
     font-size:36px;
     font-weight:900;
@@ -309,6 +320,9 @@ html, body, [class*="css"] {
     margin:14px 0 18px;
 }
 
+/* =========================
+   결과 / MBTI
+========================= */
 .result-main {
     background:#fff;
     border-radius:26px;
@@ -536,38 +550,6 @@ html, body, [class*="css"] {
     font-weight:900;
 }
 
-.similar-card {
-    background:linear-gradient(180deg, #FFFFFF 0%, #F8FBFF 100%);
-    border:1px solid #DDE8FF;
-    border-radius:18px;
-    padding:16px;
-    margin-bottom:12px;
-}
-
-.similar-top {
-    display:flex;
-    justify-content:space-between;
-    gap:10px;
-    align-items:center;
-    margin-bottom:8px;
-}
-
-.similar-name {
-    font-size:16px;
-    font-weight:900;
-    color:#111827;
-}
-
-.match-badge {
-    background:#EAF2FF;
-    color:#1155FF;
-    border-radius:999px;
-    padding:5px 10px;
-    font-size:12px;
-    font-weight:900;
-    white-space:nowrap;
-}
-
 .price-grid {
     display:grid;
     grid-template-columns:1fr 1fr;
@@ -627,33 +609,126 @@ html, body, [class*="css"] {
     color:rgba(255,255,255,0.9);
 }
 
-.tab-row {
-    display:flex;
-    flex-wrap:wrap;
-    gap:7px;
-    background:#fff;
-    border-radius:20px;
-    padding:14px;
-    border:1px solid #E5E7EB;
-    margin-bottom:14px;
+/* =========================
+   찜 / 하트
+========================= */
+.heart-pill {
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+    background:#FFF1F2;
+    color:#E11D48;
+    border-radius:999px;
+    padding:6px 10px;
+    font-size:12px;
+    font-weight:900;
+    white-space:nowrap;
 }
 
-.tab-chip {
+.heart-empty {
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
     background:#F8FAFC;
-    border:1px solid #E5E7EB;
+    color:#64748B;
     border-radius:999px;
-    padding:7px 10px;
+    padding:6px 10px;
     font-size:12px;
+    font-weight:900;
+    white-space:nowrap;
+}
+
+.like-count {
+    font-size:12px;
+    color:#6B7280;
+    font-weight:800;
+    text-align:right;
+    margin-top:4px;
+}
+
+/* =========================
+   전체 참여자 MBTI 비율
+========================= */
+.stat-card {
+    background:#fff;
+    border:1px solid #E5E7EB;
+    border-radius:22px;
+    padding:16px;
+    margin:10px 0;
+    box-shadow:0 6px 18px rgba(15,23,42,0.04);
+}
+
+.stat-head {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    margin-bottom:8px;
+}
+
+.stat-name {
+    font-size:14px;
     font-weight:900;
     color:#111827;
 }
 
-.tab-active {
-    background:#1155FF;
-    color:white;
-    border-color:#1155FF;
+.stat-pct {
+    font-size:14px;
+    font-weight:900;
+    color:#1155FF;
 }
 
+.stat-bg {
+    height:9px;
+    background:#E5E7EB;
+    border-radius:999px;
+    overflow:hidden;
+}
+
+.stat-fill {
+    height:9px;
+    background:#1155FF;
+    border-radius:999px;
+}
+
+.stat-desc {
+    font-size:12px;
+    color:#6B7280;
+    font-weight:700;
+    line-height:1.45;
+    margin-top:7px;
+}
+
+.mini-kpi-grid {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin:12px 0;
+}
+
+.mini-kpi {
+    background:#F8FAFC;
+    border:1px solid #E5E7EB;
+    border-radius:18px;
+    padding:13px;
+    text-align:center;
+}
+
+.mini-kpi-num {
+    font-size:22px;
+    color:#1155FF;
+    font-weight:900;
+}
+
+.mini-kpi-label {
+    font-size:12px;
+    color:#6B7280;
+    font-weight:800;
+}
+
+/* =========================
+   하단 네비게이션
+========================= */
 .nav-shell {
     background:#FFFFFF;
     border:1px solid #D9E2F1;
@@ -699,6 +774,7 @@ div[data-testid="stRadio"] label:hover {
     unsafe_allow_html=True,
 )
 
+
 # =========================
 # 2. HTML helper
 # =========================
@@ -735,6 +811,7 @@ ETF_PRODUCTS = [
         "change_pct": -1.32,
         "tags": ["레버리지", "변동성", "단기확인"],
         "desc": "국내 주식시장 일간 흐름을 레버리지 방식으로 추종하는 ETF입니다.",
+        "default_likes": 1284,
     },
     {
         "name": "KODEX 반도체레버리지",
@@ -750,6 +827,7 @@ ETF_PRODUCTS = [
         "change_pct": -0.69,
         "tags": ["반도체", "레버리지", "테마"],
         "desc": "반도체 테마와 레버리지 특성이 결합된 ETF입니다.",
+        "default_likes": 1732,
     },
     {
         "name": "KODEX KRX300 레버리지",
@@ -765,6 +843,7 @@ ETF_PRODUCTS = [
         "change_pct": -1.28,
         "tags": ["KRX300", "레버리지", "시장지수"],
         "desc": "KRX300 지수 흐름을 레버리지 방식으로 확인할 수 있는 ETF입니다.",
+        "default_likes": 812,
     },
     {
         "name": "KODEX 증권",
@@ -780,6 +859,7 @@ ETF_PRODUCTS = [
         "change_pct": -2.10,
         "tags": ["증권", "섹터", "국내"],
         "desc": "국내 증권업종 흐름을 확인할 수 있는 섹터형 ETF입니다.",
+        "default_likes": 604,
     },
     {
         "name": "KODEX 200IT TR",
@@ -795,6 +875,7 @@ ETF_PRODUCTS = [
         "change_pct": -0.93,
         "tags": ["IT", "TR", "국내"],
         "desc": "국내 IT 업종 중심의 지수 흐름을 확인할 수 있는 ETF입니다.",
+        "default_likes": 945,
     },
     {
         "name": "KODEX 200ESG",
@@ -810,6 +891,7 @@ ETF_PRODUCTS = [
         "change_pct": -0.49,
         "tags": ["ESG", "KOSPI200", "국내"],
         "desc": "ESG 관점의 국내 대표지수형 ETF입니다.",
+        "default_likes": 721,
     },
     {
         "name": "KODEX 미국S&P500",
@@ -825,6 +907,7 @@ ETF_PRODUCTS = [
         "change_pct": 0.72,
         "tags": ["S&P500", "미국", "환율"],
         "desc": "미국 대표지수인 S&P500 흐름을 확인할 수 있는 ETF입니다.",
+        "default_likes": 2310,
     },
     {
         "name": "KODEX 미국나스닥100",
@@ -840,6 +923,7 @@ ETF_PRODUCTS = [
         "change_pct": 0.88,
         "tags": ["나스닥100", "미국", "기술주"],
         "desc": "미국 기술주 중심 지수 흐름을 확인할 수 있는 ETF입니다.",
+        "default_likes": 2487,
     },
     {
         "name": "KODEX 배당성장",
@@ -855,6 +939,7 @@ ETF_PRODUCTS = [
         "change_pct": 0.40,
         "tags": ["배당", "분배금", "장기"],
         "desc": "배당 성장 관점에서 구성종목과 분배금 정보를 함께 확인하는 ETF입니다.",
+        "default_likes": 1588,
     },
     {
         "name": "KODEX AI전력핵심설비",
@@ -870,8 +955,121 @@ ETF_PRODUCTS = [
         "change_pct": 1.51,
         "tags": ["AI전력", "테마", "변동성"],
         "desc": "AI 전력 인프라 관련 기업에 집중된 테마형 ETF입니다.",
+        "default_likes": 1944,
     },
 ]
+
+
+# =========================
+# 3-1. 투자 MBTI 16유형 카탈로그
+# =========================
+INVEST_MBTI_CATALOG = {
+    "SDLP": {
+        "name": "안정 설계형 장기 투자자",
+        "short": "안정·분산·장기·계획",
+        "desc": "자금 상태와 투자 기간을 먼저 정리하고, ETF 구조를 차분히 확인하는 유형입니다.",
+    },
+    "SDLI": {
+        "name": "안정 분산형 직관 투자자",
+        "short": "안정·분산·장기·직관",
+        "desc": "큰 방향은 안정적으로 보지만, 최종 판단은 직관에 의존하는 편입니다.",
+    },
+    "SDQP": {
+        "name": "안정 점검형 단기 투자자",
+        "short": "안정·분산·단기·계획",
+        "desc": "단기 흐름을 보더라도 자금 상태와 리스크를 함께 점검하려는 유형입니다.",
+    },
+    "SDQI": {
+        "name": "안정 관찰형 ETF 탐색자",
+        "short": "안정·분산·단기·직관",
+        "desc": "안정성을 중시하지만, 단기 시장 분위기에도 영향을 받는 유형입니다.",
+    },
+    "SCLP": {
+        "name": "안정 집중형 장기 투자자",
+        "short": "안정·집중·장기·계획",
+        "desc": "관심 있는 상품을 오래 보되, 계획과 기준을 세우고 접근하는 유형입니다.",
+    },
+    "SCLI": {
+        "name": "안정 집중형 직관 투자자",
+        "short": "안정·집중·장기·직관",
+        "desc": "안정적인 방향을 선호하지만 익숙한 상품명이나 테마에 반응하기도 합니다.",
+    },
+    "SCQP": {
+        "name": "신중한 단기 점검자",
+        "short": "안정·집중·단기·계획",
+        "desc": "단기 확인을 하더라도 비용과 유의사항을 챙기려는 유형입니다.",
+    },
+    "SCQI": {
+        "name": "신중한 직관형 탐색자",
+        "short": "안정·집중·단기·직관",
+        "desc": "상품을 빠르게 탐색하지만, 기본적인 리스크는 의식하는 유형입니다.",
+    },
+    "GDLP": {
+        "name": "성장 분산형 장기 투자자",
+        "short": "성장·분산·장기·계획",
+        "desc": "성장 가능성을 보되, 장기 관점에서 분산 구조를 함께 확인하는 유형입니다.",
+    },
+    "GDLI": {
+        "name": "성장 분산형 직관 투자자",
+        "short": "성장·분산·장기·직관",
+        "desc": "성장 테마에 관심이 크지만, 여러 상품을 함께 살펴보려는 유형입니다.",
+    },
+    "GDQP": {
+        "name": "성장 점검형 단기 투자자",
+        "short": "성장·분산·단기·계획",
+        "desc": "단기 수익 기회를 보면서도, 비교 기준을 세워 확인하려는 유형입니다.",
+    },
+    "GDQI": {
+        "name": "트렌드 분산형 ETF 탐색자",
+        "short": "성장·분산·단기·직관",
+        "desc": "시장 트렌드에 빠르게 반응하면서도 여러 ETF를 비교하려는 유형입니다.",
+    },
+    "GCLP": {
+        "name": "성장 집중형 장기 투자자",
+        "short": "성장·집중·장기·계획",
+        "desc": "관심 테마에 집중하되 장기적인 투자 이유를 정리하려는 유형입니다.",
+    },
+    "GCLI": {
+        "name": "트렌드 반응형 ETF 탐색자",
+        "short": "성장·집중·장기·직관",
+        "desc": "성장 테마, 수익률, 익숙한 상품명에 빠르게 반응하는 편입니다.",
+    },
+    "GCQP": {
+        "name": "수익률 추적형 단기 투자자",
+        "short": "성장·집중·단기·계획",
+        "desc": "단기 수익률을 빠르게 확인하지만, 비교 기준도 함께 세우려는 유형입니다.",
+    },
+    "GCQI": {
+        "name": "핫테마 직진형 ETF 탐색자",
+        "short": "성장·집중·단기·직관",
+        "desc": "최근 오른 테마와 익숙한 상품명에 가장 빠르게 반응하는 유형입니다.",
+    },
+}
+
+
+# =========================
+# 3-2. 전체 참여자 투자 MBTI 비율 예시
+# 실제 서비스에서는 사용자 응답 로그 기반으로 집계
+# =========================
+PARTICIPANT_MBTI_STATS = [
+    {"code": "GCLI", "name": "트렌드 반응형 ETF 탐색자", "pct": 17, "count": 214},
+    {"code": "GCQI", "name": "핫테마 직진형 ETF 탐색자", "pct": 13, "count": 164},
+    {"code": "SDLP", "name": "안정 설계형 장기 투자자", "pct": 12, "count": 151},
+    {"code": "GDLP", "name": "성장 분산형 장기 투자자", "pct": 10, "count": 126},
+    {"code": "SCLP", "name": "안정 집중형 장기 투자자", "pct": 8, "count": 101},
+    {"code": "GDQI", "name": "트렌드 분산형 ETF 탐색자", "pct": 7, "count": 88},
+    {"code": "SCQP", "name": "신중한 단기 점검자", "pct": 6, "count": 76},
+    {"code": "GCQP", "name": "수익률 추적형 단기 투자자", "pct": 6, "count": 76},
+    {"code": "SCLI", "name": "안정 집중형 직관 투자자", "pct": 5, "count": 63},
+    {"code": "GDQP", "name": "성장 점검형 단기 투자자", "pct": 4, "count": 50},
+    {"code": "SDQP", "name": "안정 점검형 단기 투자자", "pct": 3, "count": 38},
+    {"code": "SDLI", "name": "안정 분산형 직관 투자자", "pct": 3, "count": 38},
+    {"code": "GCLP", "name": "성장 집중형 장기 투자자", "pct": 2, "count": 25},
+    {"code": "SCQI", "name": "신중한 직관형 탐색자", "pct": 2, "count": 25},
+    {"code": "SDQI", "name": "안정 관찰형 ETF 탐색자", "pct": 1, "count": 13},
+    {"code": "GDLI", "name": "성장 분산형 직관 투자자", "pct": 1, "count": 13},
+]
+
 
 # =========================
 # 4. 질문 데이터
@@ -945,6 +1143,7 @@ questions = [
     },
 ]
 
+
 # =========================
 # 5. 세션 상태
 # =========================
@@ -957,15 +1156,21 @@ defaults = {
     "sort_order": "높은 순",
     "selected_region": "전체",
     "compare_codes": [],
+    "favorite_codes": [],
     "saved": False,
     "product_tab": "투자포인트",
     "history": [],
+
+    # 운영자 인사이트용 프로토타입 지표
+    "mock_total_participants": 1260,
+    "mock_save_clicks": 301,
+    "mock_favorite_clicks": 512,
+    "mock_product_clicks": 684,
 }
 
 for key, value in defaults.items():
     if key not in st.session_state:
         st.session_state[key] = value
-
 
 # =========================
 # 6. 기본 함수
@@ -1011,6 +1216,7 @@ def start():
 def select_etf(code: str):
     st.session_state.selected_etf_code = code
     st.session_state.product_tab = "투자포인트"
+    st.session_state.mock_product_clicks += 1
     go("product_detail")
 
 
@@ -1073,14 +1279,13 @@ def bottom_nav(active="home"):
     </div>
     """)
 
-    cols = st.columns(5)
+    cols = st.columns(4)
 
     nav_items = [
         ("홈", "home"),
         ("전체상품", "products"),
         ("체크", "checkpoint"),
         ("투자정보", "insight"),
-        ("이벤트", "event"),
     ]
 
     for col, (label, page) in zip(cols, nav_items):
@@ -1136,19 +1341,53 @@ def point_item(title, desc):
     """
 
 
-def similar_card(etf, pct=None, weak=None):
-    items = get_product_checkpoints(etf, pct, weak)
+def get_default_like_count(code: str):
+    etf = get_etf_by_code(code)
+    return int(etf.get("default_likes", 0))
+
+
+def is_favorite(code: str):
+    return code in st.session_state.favorite_codes
+
+
+def toggle_favorite(code: str):
+    if code in st.session_state.favorite_codes:
+        st.session_state.favorite_codes.remove(code)
+    else:
+        st.session_state.favorite_codes.append(code)
+        st.session_state.mock_favorite_clicks += 1
+
+
+def favorite_badge_html(code: str):
+    liked = is_favorite(code)
+    total_likes = get_default_like_count(code) + (1 if liked else 0)
+
+    if liked:
+        return f"""
+        <div class="heart-pill">♥ 찜한 ETF</div>
+        <div class="like-count">관심 {total_likes:,}</div>
+        """
 
     return f"""
-    <div class="similar-card">
-    <div class="similar-top">
-    <div class="similar-name">{etf["name"]}</div>
-    <div class="match-badge">함께 비교</div>
+    <div class="heart-empty">♡ 관심 ETF</div>
+    <div class="like-count">관심 {total_likes:,}</div>
+    """
+
+
+def stat_bar_html(code, name, pct, desc=None):
+    desc_html = f'<div class="stat-desc">{desc}</div>' if desc else ""
+    return f"""
+    <div class="stat-card">
+    <div class="stat-head">
+    <div class="stat-name">{code} · {name}</div>
+    <div class="stat-pct">{pct}%</div>
     </div>
-    <div class="point-desc">{etf["desc"]}</div>
-    <div class="tag-wrap">{tag_html(items[:3])}</div>
+    <div class="stat-bg"><div class="stat-fill" style="width:{pct}%;"></div></div>
+    {desc_html}
     </div>
     """
+
+
 # =========================
 # 7. 분석 로직
 # =========================
@@ -1287,19 +1526,10 @@ def get_invest_mbti(pct):
     }
 
     traits = [trait_map[ch] for ch in code]
+    catalog = INVEST_MBTI_CATALOG.get(code, {})
 
-    if code[0] == "S" and code[2] == "L":
-        title = "안정 추구형 장기 투자자"
-        desc = "수익률보다 자금 상태와 장기적인 자산관리 흐름을 중시하는 편이에요."
-    elif code[0] == "G" and code[3] == "I":
-        title = "트렌드 반응형 ETF 탐색자"
-        desc = "성장 테마, 수익률, 익숙한 상품명에 빠르게 반응하는 편이에요."
-    elif code[1] == "D":
-        title = "분산 선호형 ETF 탐색자"
-        desc = "단일 정보보다 지수, 구성종목, 분산 구조를 함께 보려는 편이에요."
-    else:
-        title = "ETF 기준 점검형 탐색자"
-        desc = "ETF를 볼 때 상품의 구조와 확인 기준을 함께 살펴보려는 편이에요."
+    title = catalog.get("name", "ETF 기준 점검형 탐색자")
+    desc = catalog.get("desc", "ETF를 볼 때 상품의 구조와 확인 기준을 함께 살펴보려는 편이에요.")
 
     return {
         "code": code,
@@ -1447,34 +1677,54 @@ def checkpoint_desc(item, etf):
     return desc.get(item, "상품정보를 기준 있게 확인합니다.")
 
 
-def get_similar_etfs(pct, weak):
-    if pct is None:
-        target_categories = ["domestic_index", "global_index", "dividend"]
-    else:
-        habit = classify_habit(pct, weak)
+def checkpoint_reason(item, etf, pct=None):
+    official_reason = {
+        "기초지수": "ETF는 특정 지수나 전략을 따라가므로, 기초지수를 알아야 이 상품이 무엇에 투자하는지 이해할 수 있습니다.",
+        "해외지수": "해외지수형 ETF는 해외 시장 흐름과 환율 영향을 함께 받을 수 있어 기준 지수를 확인해야 합니다.",
+        "구성종목": "ETF 이름만으로는 실제 편입 종목과 비중을 알기 어렵기 때문에 구성종목 확인이 필요합니다.",
+        "상위 구성종목": "상위 종목 비중이 높으면 특정 기업이나 산업의 영향을 크게 받을 수 있습니다.",
+        "수익률 기간": "최근 수익률은 기간에 따라 다르게 보일 수 있어 1주·1개월·1년 기준을 구분해야 합니다.",
+        "단기 수익률 기간": "단기 수익률만 보면 일시적 상승인지 장기 흐름인지 판단하기 어렵습니다.",
+        "총보수": "ETF는 보유 기간 동안 비용이 반영되므로 장기 보유 시 총보수 확인이 중요합니다.",
+        "총보수·유의사항": "비용과 투자위험은 수익률 화면에서 잘 보이지 않지만 실제 투자 판단에 영향을 줍니다.",
+        "유의사항": "ETF도 원금 손실 가능성이 있으므로 상품 구조와 투자위험을 확인해야 합니다.",
+        "현재가·기준가": "현재가와 기준가 차이를 보면 시장 가격이 순자산가치와 얼마나 차이 나는지 감을 잡을 수 있습니다.",
+        "기준가": "기준가는 ETF의 순자산가치 흐름을 보여주는 지표입니다.",
+        "거래량": "거래량이 적으면 매수·매도 시 원하는 가격에 거래하기 어려울 수 있습니다.",
+        "환율 영향": "해외형 ETF는 기초자산 수익률 외에도 환율 변화가 성과에 영향을 줄 수 있습니다.",
+        "분배금": "분배금이 있는 ETF는 지급 기준과 지속 가능성을 함께 확인해야 합니다.",
+        "분배 기준": "분배금은 상품마다 지급 기준과 주기가 다르므로 확인이 필요합니다.",
+        "테마 집중도": "테마형 ETF는 특정 산업이나 이슈에 집중되어 변동성이 커질 수 있습니다.",
+        "변동성": "변동성이 큰 상품은 단기 수익률만 보고 판단하면 위험을 과소평가할 수 있습니다.",
+        "일간 추종 구조": "레버리지 ETF는 장기 누적 수익률이 단순 배수로 움직이지 않을 수 있어 구조 확인이 필요합니다.",
+        "투자포인트": "투자포인트는 상품의 핵심 특징을 빠르게 파악하는 출발점입니다.",
+        "상품정보": "상품정보는 총보수, 과세, 유의사항 등 기본 확인 항목이 모이는 영역입니다.",
+    }
 
-        if habit["type"] == "수익률 먼저 보는 타입":
-            target_categories = ["global_index", "theme", "leveraged"]
-        elif habit["type"] == "익숙한 이름에 끌리는 타입":
-            target_categories = ["domestic_index", "global_index"]
-        elif habit["type"] == "비용·리스크 보완형":
-            target_categories = ["domestic_index", "dividend", "global_index"]
-        elif habit["type"] == "구성종목 보완형":
-            target_categories = ["theme", "global_index", "domestic_index"]
-        else:
-            target_categories = ["domestic_index", "global_index", "dividend"]
+    user_reason = ""
 
-    result = []
+    if pct is not None:
+        if item in ["총보수", "총보수·유의사항", "유의사항"] and pct["risk"] < 50:
+            user_reason = " 특히 이번 체크리스트에서 비용·리스크 확인 점수가 낮게 나타나 이 항목을 우선 제시했습니다."
+        elif item in ["기초지수", "구성종목", "상위 구성종목"] and pct["structure"] < 50:
+            user_reason = " 특히 이번 체크리스트에서 상품 구조 확인 습관이 낮게 나타나 이 항목을 우선 제시했습니다."
+        elif item in ["수익률 기간", "단기 수익률 기간", "변동성"] and pct["return"] >= 60:
+            user_reason = " 최근 수익률에 빠르게 반응하는 편으로 나타나, 수익률의 기준 기간과 변동성을 함께 확인하도록 제시했습니다."
+        elif item in ["기초지수", "투자포인트"] and pct["name"] >= 50:
+            user_reason = " 익숙한 상품명에 반응하는 편으로 나타나, 이름보다 실제 추종 지수와 상품 구조를 먼저 확인하도록 제시했습니다."
 
-    for cat in target_categories:
-        for item in ETF_PRODUCTS:
-            if item["category"] == cat and item not in result:
-                result.append(item)
+    product_reason = ""
 
-            if len(result) >= 3:
-                return result
+    if etf["category"] == "leveraged":
+        product_reason = " 또한 이 상품은 레버리지 성격이 있어 일반 지수형 ETF보다 구조와 유의사항 확인이 더 중요합니다."
+    elif etf["category"] == "theme":
+        product_reason = " 또한 이 상품은 테마형 ETF라 특정 산업·이슈에 집중될 수 있어 구성종목과 변동성을 함께 봐야 합니다."
+    elif etf["category"] == "global_index":
+        product_reason = " 또한 해외지수형 ETF는 해외 시장과 환율 영향을 함께 받을 수 있습니다."
+    elif etf["category"] == "dividend":
+        product_reason = " 또한 배당형 ETF는 분배금뿐 아니라 구성종목과 분배 기준을 함께 확인해야 합니다."
 
-    return result[:3]
+    return official_reason.get(item, "ETF 확인을 위해 필요한 기본 항목입니다.") + user_reason + product_reason
 
 
 # =========================
@@ -1482,7 +1732,6 @@ def get_similar_etfs(pct, weak):
 # =========================
 @st.cache_data(ttl=60)
 def load_etf_products():
-    # 실제 서비스에서는 여기에서 공식/제휴 API를 호출하면 됩니다.
     return pd.DataFrame(ETF_PRODUCTS)
 
 
@@ -1645,6 +1894,7 @@ def render_detail_tab_content(etf):
         </div>
         """)
 
+
 # =========================
 # 9. 페이지: 홈
 # =========================
@@ -1658,9 +1908,9 @@ def render_home():
     </div>
 
     <div class="hero-card">
-    <div class="hero-pill">반도체 맛집</div>
-    <div class="hero-title">전국민 반도체 투자,<br>반도체는 역시 삼성 KODEX</div>
-    <div class="hero-link">반도체 맛집 ETF 확인하기 →</div>
+    <div class="hero-pill">CHECKPOINT</div>
+    <div class="hero-title">ETF 보기 전,<br>내가 놓치기 쉬운 항목부터 체크</div>
+    <div class="hero-link">투자 MBTI 확인하고 ETF 체크하기 →</div>
     </div>
 
     <div class="search-box">🔍 &nbsp; 상품명 혹은 종목코드 검색</div>
@@ -1676,7 +1926,7 @@ def render_home():
     </div>
     """)
 
-    if st.button("KODEX CHECKPOINT 시작하기", type="primary", use_container_width=True):
+    if st.button("투자 MBTI 확인하기", type="primary", use_container_width=True):
         start()
 
     c1, c2 = st.columns(2)
@@ -1686,7 +1936,7 @@ def render_home():
             go("products")
 
     with c2:
-        if st.button("투자정보 보기", use_container_width=True):
+        if st.button("운영자 인사이트", use_container_width=True):
             go("insight")
 
     df = load_etf_products()
@@ -1695,14 +1945,46 @@ def render_home():
     html(f"""
     <div class="section-title">오늘 많이 본 KODEX</div>
     <div class="product-card">
+    <div style="display:flex; justify-content:space-between; gap:10px; align-items:flex-start;">
+    <div>
     <div class="product-name">{top['name']}</div>
     <div class="product-meta">{top['desc']}</div>
+    </div>
+    <div>{favorite_badge_html(top['code'])}</div>
+    </div>
     <div class="product-rate">+{top['return_1w']:.1f}%</div>
     </div>
     """)
 
-    if st.button(f"{top['name']} 상품 보기", use_container_width=True):
-        select_etf(top["code"])
+    c1, c2 = st.columns(2)
+
+    with c1:
+        if st.button(f"{top['name']} 상품 보기", use_container_width=True):
+            select_etf(top["code"])
+
+    with c2:
+        fav_label = "♥ 찜 해제" if is_favorite(top["code"]) else "♡ 찜하기"
+
+        if st.button(fav_label, key=f"home_fav_{top['code']}", use_container_width=True):
+            toggle_favorite(top["code"])
+            st.rerun()
+
+    if st.session_state.favorite_codes:
+        html("""
+        <div class="info-card">
+        <div class="info-title">내가 찜한 KODEX</div>
+        <div class="point-desc">관심 있는 ETF를 하트로 모아두고 나중에 다시 확인할 수 있어요.</div>
+        </div>
+        """)
+
+        for code in st.session_state.favorite_codes[:3]:
+            item = get_etf_by_code(code)
+            html(f"""
+            <div class="product-card">
+            <div class="product-name" style="font-size:17px;">♥ {item['name']}</div>
+            <div class="product-meta">{item['desc']}</div>
+            </div>
+            """)
 
     phone_footer()
     bottom_nav("home")
@@ -1721,7 +2003,6 @@ def render_checklist():
     st.markdown(
         """
         <style>
-        /* 체크리스트 페이지 질문 글자 */
         .question-title {
             color: #111827 !important;
         }
@@ -1730,7 +2011,6 @@ def render_checklist():
             color: #111827 !important;
         }
 
-        /* 체크리스트 라디오 선지 글자 */
         div[data-testid="stRadio"] label,
         div[data-testid="stRadio"] label *,
         div[data-testid="stRadio"] p,
@@ -1738,7 +2018,6 @@ def render_checklist():
             color: #111827 !important;
         }
 
-        /* 선택지 카드 배경은 흰색으로 고정 */
         div[data-testid="stRadio"] label {
             background: #FFFFFF !important;
         }
@@ -1746,7 +2025,7 @@ def render_checklist():
         """,
         unsafe_allow_html=True,
     )
-    
+
     page_title_bar("KODEX CHECKPOINT", default_back="home")
 
     html(f"""
@@ -1795,7 +2074,6 @@ def render_checklist():
     phone_footer()
     bottom_nav("checkpoint")
 
-
 # =========================
 # 11. 페이지: 리포트
 # =========================
@@ -1821,11 +2099,6 @@ def render_report():
 
     summary_html = "".join([f"<li>{line}</li>" for line in summary_lines])
     missed_html = "".join([f"<li>{x}</li>" for x in missed])
-
-    similar_html = "".join([
-        similar_card(item, pct, weak)
-        for item in get_similar_etfs(pct, weak)
-    ])
 
     phone_header()
 
@@ -1878,34 +2151,50 @@ def render_report():
     {score_bar("수익률·트렌드 반응", pct["return"])}
     {score_bar("상품 구조 확인 습관", pct["structure"])}
     {score_bar("비용·리스크 확인 습관", pct["risk"])}
-    <div class="note-text">이 점수는 투자 실력 평가가 아니라, ETF를 볼 때 어떤 정보를 먼저 보고 어떤 항목을 놓치기 쉬운지 확인하기 위한 점수입니다.</div>
+    <div class="note-text">
+    이 점수는 투자 실력 평가가 아니라, ETF를 볼 때 어떤 정보를 먼저 보고 어떤 항목을 놓치기 쉬운지 확인하기 위한 점수입니다.
+    </div>
     </div>
 
     <div class="info-card">
     <div class="info-title">한 번 더 확인하면 좋은 항목</div>
     <ul class="summary-list">{missed_html}</ul>
+    <div class="insight">
+    이 항목은 ETF의 공식 확인 요소와 사용자의 체크리스트 응답을 함께 반영해 도출됩니다.
+    즉, 단순 추천이 아니라 사용자가 놓치기 쉬운 확인 항목을 먼저 보여주는 구조입니다.
+    </div>
     </div>
 
     <div class="info-card">
-    <div class="info-title">비슷한 확인 유형이 함께 비교한 ETF</div>
-    <div class="insight">비슷한 ETF 확인 습관을 가진 사용자가 추가로 살펴본 상품과 정보입니다.</div>
-    {similar_html}
+    <div class="info-title">투자 MBTI 결과 활용</div>
+    <div class="point-desc">
+    투자 MBTI는 사용자가 ETF를 볼 때 어떤 판단 기준에 더 민감한지 보여주는 요약 지표입니다.<br>
+    기업은 전체 참여자의 투자 MBTI 분포를 통해 20대가 수익률, 안정성, 장기성, 직관성 중 어떤 성향에 가까운지 확인할 수 있습니다.
+    </div>
     </div>
     """)
 
-    if st.button("전체상품에서 ETF 확인하기", type="primary", use_container_width=True):
-        go("products")
+    c1, c2 = st.columns(2)
+
+    with c1:
+        if st.button("전체상품에서 ETF 확인하기", type="primary", use_container_width=True):
+            go("products")
+
+    with c2:
+        if st.button("운영자 인사이트", use_container_width=True):
+            go("insight")
 
     c1, c2 = st.columns(2)
 
     with c1:
         if st.button("체크리스트 저장", use_container_width=True):
             st.session_state.saved = True
+            st.session_state.mock_save_clicks += 1
             st.success("체크리스트가 저장되었습니다.")
 
     with c2:
-        if st.button("운영자 인사이트", use_container_width=True):
-            go("insight")
+        if st.button("다시 체크하기", use_container_width=True):
+            start()
 
     phone_footer()
     bottom_nav("checkpoint")
@@ -1931,7 +2220,7 @@ def product_list_card(etf, pct=None, weak=None):
     <div class="product-name">{etf["name"]}</div>
     <div class="product-code">{etf["code"]}</div>
     </div>
-    <div class="compare-chip">비교</div>
+    <div>{favorite_badge_html(etf["code"])}</div>
     </div>
 
     <div class="tag-wrap">{tags}</div>
@@ -2026,15 +2315,22 @@ def render_products():
         etf = row.to_dict()
         html(product_list_card(etf, pct, weak))
 
-        c1, c2 = st.columns(2)
+        c1, c2, c3 = st.columns([1.4, 1, 1])
 
         with c1:
             if st.button(f"{etf['name']} 상품 확인", key=f"open_{etf['code']}", use_container_width=True):
                 select_etf(etf["code"])
 
         with c2:
+            fav_label = "♥ 찜 해제" if is_favorite(etf["code"]) else "♡ 찜"
+
+            if st.button(fav_label, key=f"fav_{etf['code']}", use_container_width=True):
+                toggle_favorite(etf["code"])
+                st.rerun()
+
+        with c3:
             is_compared = etf["code"] in st.session_state.compare_codes
-            label = "비교 해제" if is_compared else "비교 담기"
+            label = "비교 해제" if is_compared else "비교"
 
             if st.button(label, key=f"compare_{etf['code']}", use_container_width=True):
                 if is_compared:
@@ -2043,6 +2339,22 @@ def render_products():
                     st.session_state.compare_codes.append(etf["code"])
 
                 st.rerun()
+
+    if st.session_state.favorite_codes:
+        html('<div class="section-title">내가 찜한 ETF</div>')
+
+        favorite_rows = []
+
+        for code in st.session_state.favorite_codes:
+            item = get_etf_by_code(code)
+            favorite_rows.append({
+                "상품명": item["name"],
+                "현재가": f'{item["price"]:,}원',
+                "1주 수익률": f'+{item["return_1w"]:.1f}%',
+                "확인 포인트": " · ".join(get_product_checkpoints(item, pct, weak)[:3]),
+            })
+
+        st.dataframe(pd.DataFrame(favorite_rows), use_container_width=True, hide_index=True)
 
     if st.session_state.compare_codes:
         html('<div class="section-title">비교함</div>')
@@ -2077,10 +2389,17 @@ def render_product_detail():
     checkpoint_html = "".join([
         point_item(
             f"{idx + 1}. {item}",
-            f"{checkpoint_desc(item, etf)}<br><br><b>연결 위치</b> · {checkpoint_to_tab(item)}"
+            f"{checkpoint_desc(item, etf)}<br><br>"
+            f"<b>왜 확인해야 하나요?</b><br>{checkpoint_reason(item, etf, pct)}<br><br>"
+            f"<b>연결 위치</b> · {checkpoint_to_tab(item)}"
         )
         for idx, item in enumerate(items)
     ])
+
+    if etf["change"] >= 0:
+        detail_change = f"▲ {etf['change']:,} ({etf['change_pct']:.2f}%)"
+    else:
+        detail_change = f"▼ {abs(etf['change']):,} ({abs(etf['change_pct']):.2f}%)"
 
     phone_header()
 
@@ -2088,9 +2407,14 @@ def render_product_detail():
 
     html(f"""
     <div class="purple-hero">
+    <div style="display:flex; justify-content:space-between; gap:10px; align-items:flex-start;">
+    <div>
     <div class="badge-soft">{etf["region"]} · {etf["kind"]}</div>
     <div class="purple-title">{etf["name"]}</div>
     <div style="font-size:19px;font-weight:900;margin-bottom:12px;">{etf["code"]}</div>
+    </div>
+    <div>{favorite_badge_html(etf["code"])}</div>
+    </div>
     <div class="purple-desc">{etf["desc"]}</div>
     <div class="tag-wrap">{tags}</div>
     </div>
@@ -2099,7 +2423,7 @@ def render_product_detail():
     <div class="price-box">
     <div class="price-label">현재가(원)</div>
     <div class="price-num">{etf["price"]:,}</div>
-    <div class="price-up">▲ {etf["change"]:,} ({etf["change_pct"]:.2f}%)</div>
+    <div class="price-up">{detail_change}</div>
     </div>
 
     <div class="price-box">
@@ -2109,6 +2433,12 @@ def render_product_detail():
     </div>
     </div>
     """)
+
+    fav_label = "♥ 찜 해제하기" if is_favorite(etf["code"]) else "♡ 관심 ETF 찜하기"
+
+    if st.button(fav_label, key=f"detail_fav_{etf['code']}", use_container_width=True):
+        toggle_favorite(etf["code"])
+        st.rerun()
 
     render_detail_tabs()
 
@@ -2150,23 +2480,8 @@ def render_product_detail():
     with c2:
         if st.button("체크리스트 저장", type="primary", use_container_width=True):
             st.session_state.saved = True
+            st.session_state.mock_save_clicks += 1
             st.success("체크리스트가 저장되었습니다.")
-
-    html("""
-    <div class="info-card">
-    <div class="info-title">함께 비교해볼 만한 KODEX 상품</div>
-    <div class="point-desc">비슷한 확인 유형의 사용자가 추가로 살펴본 상품입니다.</div>
-    </div>
-    """)
-
-    for item in get_similar_etfs(pct, weak):
-        if item["code"] == etf["code"]:
-            continue
-
-        html(similar_card(item, pct, weak))
-
-        if st.button(f"{item['name']} 비교해보기", key=f"detail_compare_{item['code']}", use_container_width=True):
-            select_etf(item["code"])
 
     phone_footer()
     bottom_nav("products")
@@ -2182,31 +2497,89 @@ def render_insight():
 
     page_title_bar("운영자 인사이트", default_back="home")
 
-    html("""
+    total = st.session_state.mock_total_participants
+    save_rate = round(st.session_state.mock_save_clicks / total * 100, 1)
+    fav_rate = round(st.session_state.mock_favorite_clicks / total * 100, 1)
+    product_rate = round(st.session_state.mock_product_clicks / total * 100, 1)
+
+    top_mbti = PARTICIPANT_MBTI_STATS[0]
+    top_three = PARTICIPANT_MBTI_STATS[:3]
+
+    html(f"""
     <div class="section-title">기업 활용 데이터 예시</div>
     <div class="caption">
     CHECKPOINT는 20대가 ETF를 보기 전 어떤 정보를 먼저 보고, 어떤 항목에서 이탈하는지 확인할 수 있는 데이터 접점이 될 수 있습니다.
     </div>
 
+    <div class="mini-kpi-grid">
+    <div class="mini-kpi">
+    <div class="mini-kpi-num">{total:,}</div>
+    <div class="mini-kpi-label">누적 참여자</div>
+    </div>
+    <div class="mini-kpi">
+    <div class="mini-kpi-num">{top_mbti["pct"]}%</div>
+    <div class="mini-kpi-label">최다 MBTI 비율</div>
+    </div>
+    <div class="mini-kpi">
+    <div class="mini-kpi-num">{fav_rate}%</div>
+    <div class="mini-kpi-label">찜 클릭률</div>
+    </div>
+    <div class="mini-kpi">
+    <div class="mini-kpi-num">{product_rate}%</div>
+    <div class="mini-kpi-label">상품 상세 진입률</div>
+    </div>
+    </div>
+
     <div class="info-card">
     <div class="info-title">수집 가능한 지표</div>
     <div class="point-desc">
-    · 가장 많이 나온 ETF 확인 유형<br>
-    · 가장 많이 놓친 정보 항목<br>
-    · 전체상품 탭 진입률<br>
+    · 전체 참여자 중 투자 MBTI 비율<br>
+    · 가장 많이 나온 투자 성향 유형<br>
+    · 가장 많이 놓친 ETF 확인 항목<br>
     · 상품 상세페이지 클릭률<br>
     · 수익률 탭 이동률<br>
     · 구성종목 탭 이동률<br>
     · 총보수 확인률<br>
-    · 비교 담기 클릭률<br>
-    · 체크리스트 저장률<br>
-    · 관련콘텐츠 클릭률
+    · 찜 버튼 클릭률<br>
+    · 체크리스트 저장률
     </div>
     </div>
 
     <div class="insight">
-    예를 들어 구성종목 확인 단계에서 이탈이 높다면, 구성종목을 쉽게 설명하는 카드뉴스나 숏폼 콘텐츠를 제작할 수 있습니다.
-    총보수 확인률이 낮다면, 총보수를 쉽게 설명하는 상품 상세 안내 카드를 강화할 수 있습니다.
+    기업은 전체 참여자 중 어떤 투자 MBTI가 많은지 파악해 20대의 ETF 확인 성향을 이해할 수 있습니다.
+    예를 들어 트렌드 반응형이 많다면 수익률 중심 콘텐츠보다 구성종목·총보수·유의사항을 보완하는 콘텐츠가 필요합니다.
+    </div>
+    """)
+
+    html("""
+    <div class="info-card">
+    <div class="info-title">전체 참여자 투자 MBTI 비율</div>
+    <div class="point-desc">
+    프로토타입 예시 데이터입니다. 실제 서비스에서는 체크리스트 응답 로그를 기반으로 자동 집계됩니다.
+    </div>
+    </div>
+    """)
+
+    for item in PARTICIPANT_MBTI_STATS:
+        html(stat_bar_html(
+            item["code"],
+            item["name"],
+            item["pct"],
+            f"참여자 {item['count']}명 · {INVEST_MBTI_CATALOG.get(item['code'], {}).get('short', '')}"
+        ))
+
+    stats_df = pd.DataFrame(PARTICIPANT_MBTI_STATS)
+    chart_df = stats_df[["code", "pct"]].set_index("code")
+
+    st.bar_chart(chart_df)
+
+    html(f"""
+    <div class="info-card">
+    <div class="info-title">기업 활용 해석 예시</div>
+    {point_item("트렌드 반응형 비중 확인", f"{top_three[0]['code']}형이 {top_three[0]['pct']}%로 가장 높게 나타나면, 20대가 성장 테마와 수익률에 빠르게 반응한다는 인사이트를 얻을 수 있습니다.")}
+    {point_item("안정형·장기형 비중 확인", "SDLP, GDLP처럼 장기형 유형의 비율을 보면 장기 투자 콘텐츠 수요를 추정할 수 있습니다.")}
+    {point_item("찜 데이터와 결합", "투자 MBTI별로 어떤 KODEX ETF를 찜했는지 보면 성향별 관심 상품군을 파악할 수 있습니다.")}
+    {point_item("체크리스트 데이터와 결합", "사용자가 어떤 항목에서 낮은 점수를 보이는지 확인해 상품 상세 콘텐츠의 설명 순서를 개선할 수 있습니다.")}
     </div>
     """)
 
@@ -2214,7 +2587,7 @@ def render_insight():
         habit = classify_habit(pct, weak)
         invest = get_invest_mbti(pct)
         missed = ", ".join(missed_items(pct, weak))
-        similar = ", ".join([item["name"] for item in get_similar_etfs(pct, weak)])
+        favorites = ", ".join([get_etf_by_code(code)["name"] for code in st.session_state.favorite_codes]) or "없음"
 
         html(f"""
         <div class="info-card">
@@ -2223,7 +2596,7 @@ def render_insight():
         투자 MBTI: {invest["code"]} · {invest["title"]}<br>
         확인 유형: {habit["type"]} · {habit["mbti"]}<br>
         보완 항목: {missed}<br>
-        함께 비교한 ETF: {similar}
+        찜한 ETF: {favorites}
         </div>
         </div>
         """)
@@ -2233,33 +2606,7 @@ def render_insight():
 
 
 # =========================
-# 15. 페이지: 이벤트
-# =========================
-def render_event():
-    phone_header()
-
-    page_title_bar("이벤트", default_back="home")
-
-    html("""
-    <div class="check-card">
-    <div class="badge">EVENT</div>
-    <div class="check-title">ETF 보기 전,<br>KODEX CHECKPOINT</div>
-    <div class="check-desc">
-    체크리스트 완료 후 공유 카드를 저장하면<br>
-    ETF 확인 습관을 다시 볼 수 있어요.
-    </div>
-    </div>
-    """)
-
-    if st.button("체크포인트 시작하기", type="primary", use_container_width=True):
-        start()
-
-    phone_footer()
-    bottom_nav("event")
-
-
-# =========================
-# 16. 라우팅
+# 15. 라우팅
 # =========================
 if st.session_state.page == "home":
     render_home()
@@ -2273,7 +2620,5 @@ elif st.session_state.page == "product_detail":
     render_product_detail()
 elif st.session_state.page == "insight":
     render_insight()
-elif st.session_state.page == "event":
-    render_event()
 else:
     render_home()
