@@ -199,6 +199,17 @@ html, body, [class*="css"] {
     margin-bottom:8px;
 }
 
+.badge-green {
+    display:inline-block;
+    background:#DCFCE7;
+    color:#15803D;
+    border-radius:999px;
+    padding:6px 12px;
+    font-size:12px;
+    font-weight:900;
+    margin-bottom:8px;
+}
+
 .check-title {
     color:#1155FF;
     font-size:21px;
@@ -633,6 +644,44 @@ html, body, [class*="css"] {
 }
 
 /* =========================
+   같은 MBTI 추천 ETF
+========================= */
+.peer-card {
+    background:#FFFFFF;
+    border:1.5px solid #D9E7FF;
+    border-radius:24px;
+    padding:17px 16px;
+    margin:10px 0;
+    box-shadow:0 6px 18px rgba(15,23,42,0.04);
+}
+
+.peer-rank {
+    display:inline-block;
+    background:#1155FF;
+    color:#fff;
+    border-radius:999px;
+    padding:4px 9px;
+    font-size:11px;
+    font-weight:900;
+    margin-bottom:7px;
+}
+
+.peer-name {
+    font-size:16px;
+    font-weight:900;
+    color:#111827;
+    line-height:1.35;
+    margin-bottom:5px;
+}
+
+.peer-desc {
+    font-size:12px;
+    color:#6B7280;
+    font-weight:700;
+    line-height:1.5;
+}
+
+/* =========================
    이벤트 / 응모권 / 뽑기
 ========================= */
 .event-banner {
@@ -782,7 +831,7 @@ html, body, [class*="css"] {
 
 .ticket-grid {
     display:grid;
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:1fr;
     gap:10px;
     margin:12px 0;
 }
@@ -796,31 +845,22 @@ html, body, [class*="css"] {
     box-shadow:0 6px 18px rgba(15,23,42,0.04);
 }
 
-.ticket-card-premium {
-    background:linear-gradient(135deg, #FFF7ED 0%, #FFFFFF 100%);
-    border:1.5px solid #FDBA74;
-}
-
 .ticket-num {
-    font-size:32px;
+    font-size:36px;
     font-weight:900;
     color:#1155FF;
     line-height:1;
 }
 
-.ticket-card-premium .ticket-num {
-    color:#EA580C;
-}
-
 .ticket-label {
-    font-size:13px;
+    font-size:14px;
     color:#111827;
     font-weight:900;
     margin-top:8px;
 }
 
 .ticket-sub {
-    font-size:11px;
+    font-size:12px;
     color:#6B7280;
     font-weight:700;
     line-height:1.45;
@@ -846,6 +886,20 @@ html, body, [class*="css"] {
     font-weight:900;
     letter-spacing:5px;
     margin:8px 0 10px;
+}
+
+.share-link-box {
+    background:#F8FAFC;
+    border:1.5px dashed #9DBBFF;
+    border-radius:18px;
+    padding:13px;
+    font-size:12px;
+    color:#1E3A8A;
+    line-height:1.55;
+    font-weight:800;
+    word-break:break-all;
+    margin:12px 0;
+    text-align:left;
 }
 
 .share-complete {
@@ -932,18 +986,46 @@ html, body, [class*="css"] {
 }
 
 .referral-card {
-    background:linear-gradient(135deg, #FFF7ED 0%, #FFFFFF 100%);
-    border:1.5px solid #FDBA74;
+    background:linear-gradient(135deg, #EFF6FF 0%, #FFFFFF 100%);
+    border:1.5px solid #BFDBFE;
     border-radius:24px;
     padding:18px;
     margin:14px 0;
 }
 
 .referral-title {
-    color:#C2410C;
+    color:#1D4ED8;
     font-size:18px;
     font-weight:900;
     margin-bottom:7px;
+}
+
+.friend-status-grid {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:9px;
+    margin-top:12px;
+}
+
+.friend-status-box {
+    background:#FFFFFF;
+    border:1px solid #D9E7FF;
+    border-radius:17px;
+    padding:12px;
+    text-align:center;
+}
+
+.friend-status-num {
+    font-size:22px;
+    color:#1155FF;
+    font-weight:900;
+}
+
+.friend-status-label {
+    font-size:11px;
+    color:#6B7280;
+    font-weight:800;
+    line-height:1.35;
 }
 
 /* =========================
@@ -1142,19 +1224,13 @@ EVENT_INFO = {
     "copy_2": "반도체는 역시 삼성 Kodex ETF",
     "official_url": "https://www.samsungfund.com/etf/lounge/draw-game-view.do?seq=68511719",
     "share_limit": 5,
-    "premium_limit": 3,
+    "daily_ticket_limit": 5,
 }
 
 DRAW_PRIZES_NORMAL = [
     {"title": "아쉽지만 꽝이에요", "desc": "일반 응모권은 꽝이 포함될 수 있어요. 내일 다시 참여해보세요.", "emoji": "😢", "is_win": False},
     {"title": "커피 쿠폰 응모 완료", "desc": "베가MGC커피 쿠폰 경품 응모가 완료되었어요.", "emoji": "☕", "is_win": True},
     {"title": "편의점 상품권 응모 완료", "desc": "편의점 모바일 상품권 경품 응모가 완료되었어요.", "emoji": "🎁", "is_win": True},
-    {"title": "KODEX 굿즈 응모 완료", "desc": "KODEX 브랜드 굿즈 경품 응모가 완료되었어요.", "emoji": "📘", "is_win": True},
-]
-
-DRAW_PRIZES_PREMIUM = [
-    {"title": "꽝 없는 응모 완료", "desc": "프리미엄 응모권으로 경품 응모가 완료되었어요.", "emoji": "🎉", "is_win": True},
-    {"title": "커피 쿠폰 응모 완료", "desc": "베가MGC커피 쿠폰 경품 응모가 완료되었어요.", "emoji": "☕", "is_win": True},
     {"title": "KODEX 굿즈 응모 완료", "desc": "KODEX 브랜드 굿즈 경품 응모가 완료되었어요.", "emoji": "📘", "is_win": True},
 ]
 
@@ -1438,7 +1514,31 @@ INVEST_MBTI_CATALOG = {
 
 
 # =========================
-# 3-2. 전체 참여자 투자 MBTI 비율 예시
+# 3-2. 같은 투자 MBTI 유형이 많이 확인한 ETF 예시
+# 실제 서비스에서는 MBTI 유형별 상품 상세 진입/찜/매수 데이터를 기반으로 집계
+# =========================
+PEER_ETF_BY_MBTI = {
+    "SCLP": ["0190G0", "211900", "379800"],
+    "SDLP": ["379800", "211900", "337160"],
+    "SDLI": ["379800", "337160", "211900"],
+    "SDQP": ["379800", "337160", "363580"],
+    "SDQI": ["379800", "363580", "337160"],
+    "SCLI": ["0190G0", "211900", "379800"],
+    "SCQP": ["363580", "211900", "0190G0"],
+    "SCQI": ["0190G0", "363580", "379800"],
+    "GDLP": ["379810", "487230", "0190G0"],
+    "GDLI": ["379810", "487230", "494310"],
+    "GDQP": ["487230", "379810", "494310"],
+    "GDQI": ["487230", "494310", "0190G0"],
+    "GCLP": ["0190G0", "487230", "379810"],
+    "GCLI": ["0190G0", "487230", "494310"],
+    "GCQP": ["494310", "122630", "0190G0"],
+    "GCQI": ["494310", "122630", "487230"],
+}
+
+
+# =========================
+# 3-3. 전체 참여자 투자 MBTI 비율 예시
 # 실제 서비스에서는 사용자 응답 로그 기반으로 집계
 # =========================
 PARTICIPANT_MBTI_STATS = [
@@ -1462,15 +1562,15 @@ PARTICIPANT_MBTI_STATS = [
 
 
 # =========================
-# 3-3. 이벤트 성과 예시 데이터
+# 3-4. 이벤트 성과 예시 데이터
 # 실제 서비스에서는 이벤트 로그 / 공유 링크 / 인증 데이터를 기반으로 집계
 # =========================
 EVENT_MBTI_STATS = [
-    {"code": "GCLI", "share_rate": 24, "event_view_rate": 41, "buy_auth_rate": 7},
-    {"code": "GCQI", "share_rate": 21, "event_view_rate": 38, "buy_auth_rate": 6},
-    {"code": "SDLP", "share_rate": 12, "event_view_rate": 29, "buy_auth_rate": 5},
-    {"code": "GDLP", "share_rate": 16, "event_view_rate": 33, "buy_auth_rate": 6},
-    {"code": "SCLP", "share_rate": 11, "event_view_rate": 27, "buy_auth_rate": 4},
+    {"code": "GCLI", "share_rate": 24, "friend_check_rate": 31, "event_view_rate": 41, "buy_confirm_rate": 7},
+    {"code": "GCQI", "share_rate": 21, "friend_check_rate": 28, "event_view_rate": 38, "buy_confirm_rate": 6},
+    {"code": "SDLP", "share_rate": 12, "friend_check_rate": 18, "event_view_rate": 29, "buy_confirm_rate": 5},
+    {"code": "GDLP", "share_rate": 16, "friend_check_rate": 22, "event_view_rate": 33, "buy_confirm_rate": 6},
+    {"code": "SCLP", "share_rate": 11, "friend_check_rate": 17, "event_view_rate": 27, "buy_confirm_rate": 4},
 ]
 
 
@@ -1568,25 +1668,35 @@ defaults = {
     "shared_mbti": False,
     "share_count": 0,
     "normal_tickets": 0,
-    "premium_tickets": 0,
     "used_normal_tickets": 0,
-    "used_premium_tickets": 0,
     "last_draw_result": None,
     "draw_history": [],
+    "share_link_copied": False,
+    "daily_tickets_issued": 0,
+    "friend_checklist_reward_count": 0,
+    "friend_buy_reward_count": 0,
 
-    # 프로토타입용 이벤트 지표
+    # 친구 유입 상태 예시
+    "mock_friend_link_visits": 4,
+    "mock_friend_checklist_completed": 2,
+    "mock_friend_event_product_views": 1,
+    "mock_friend_buy_confirmed": 1,
+
+    # 운영자 인사이트용 프로토타입 지표
     "mock_total_participants": 1260,
     "mock_save_clicks": 301,
     "mock_favorite_clicks": 512,
     "mock_product_clicks": 684,
     "mock_event_page_visits": 418,
+    "mock_share_link_created": 176,
     "mock_share_clicks": 176,
     "mock_general_tickets_issued": 176,
-    "mock_premium_tickets_issued": 38,
     "mock_draw_plays": 121,
     "mock_referral_visits": 94,
-    "mock_referral_buy_auth": 38,
+    "mock_referral_checklist_complete": 51,
+    "mock_referral_buy_confirm": 18,
     "mock_event_product_clicks": 147,
+    "mock_daily_limit_users": 12,
 }
 
 for key, value in defaults.items():
@@ -1666,70 +1776,140 @@ def get_event_etf():
     return ETF_PRODUCTS[0]
 
 
+def can_issue_daily_ticket():
+    return st.session_state.daily_tickets_issued < EVENT_INFO["daily_ticket_limit"]
+
+
+def issue_normal_ticket(reason: str):
+    """
+    모든 보상은 일반 응모권으로 통일.
+    하루 최대 지급 한도 안에서만 응모권 지급.
+    """
+    if not can_issue_daily_ticket():
+        return False, f"오늘 받을 수 있는 응모권 한도({EVENT_INFO['daily_ticket_limit']}장)에 도달했어요."
+
+    st.session_state.normal_tickets += 1
+    st.session_state.daily_tickets_issued += 1
+    st.session_state.mock_general_tickets_issued += 1
+
+    return True, f"{reason} 일반 응모권 1장이 지급되었습니다."
+
+
+def make_share_link(invest_code: str):
+    """
+    실제 서비스에서는 사용자 ID, 추천인 ID, 캠페인 ID, 만료시간 등을 포함한 추적 링크로 생성.
+    프로토타입에서는 투자 MBTI 코드와 날짜를 넣어 공유 링크처럼 보여줌.
+    """
+    today = datetime.now().strftime("%Y%m%d")
+    return f"https://kodex-checkpoint.streamlit.app/?ref={invest_code}-{today}"
+
+
 def issue_share_ticket():
     """
     프로토타입용 공유 완료 처리.
-    실제 서비스에서는 카카오톡/인스타/링크 공유 완료 콜백과 연결 가능.
+    실제 서비스에서는 링크 복사, 카카오톡 공유, 인스타 공유, 공유 콜백 등과 연결 가능.
     """
     if len(st.session_state.answers) < len(questions):
         return False, "투자 MBTI 결과가 아직 없어요. 먼저 CHECKPOINT를 완료해주세요."
 
     if st.session_state.share_count >= EVENT_INFO["share_limit"]:
-        return False, f"이벤트 기간 내 공유 응모권은 최대 {EVENT_INFO['share_limit']}장까지 받을 수 있어요."
+        return False, f"이벤트 기간 내 결과 공유 응모권은 최대 {EVENT_INFO['share_limit']}장까지 받을 수 있어요."
+
+    ok, msg = issue_normal_ticket("투자 MBTI 결과 공유가 완료되어")
+
+    if not ok:
+        return False, msg
 
     st.session_state.shared_mbti = True
     st.session_state.share_count += 1
-    st.session_state.normal_tickets += 1
     st.session_state.mock_share_clicks += 1
-    st.session_state.mock_general_tickets_issued += 1
+    st.session_state.mock_share_link_created += 1
 
-    return True, "투자 MBTI 결과 공유가 완료되어 일반 응모권 1장이 지급되었습니다."
+    return True, msg
 
 
-def simulate_referral_buy_auth():
+def copy_share_link():
     """
-    프로토타입용 친구 매수 인증 완료 처리.
-    실제 서비스에서는 공유 링크 추적, 신규상장 ETF 정보 확인, 매수 인증 API/이벤트 인증과 연결 필요.
+    Streamlit 프로토타입에서는 실제 클립보드 복사 대신 복사 완료 상태만 표시.
+    실제 서비스에서는 navigator.clipboard 또는 모바일 공유 API와 연결.
     """
-    issued_total = st.session_state.premium_tickets + st.session_state.used_premium_tickets
+    if len(st.session_state.answers) < len(questions):
+        return False, "투자 MBTI 결과가 있어야 공유 링크를 만들 수 있어요."
 
-    if issued_total >= EVENT_INFO["premium_limit"]:
-        return False, f"꽝 없는 응모권은 이벤트 기간 최대 {EVENT_INFO['premium_limit']}장까지 받을 수 있어요."
-
-    st.session_state.premium_tickets += 1
-    st.session_state.mock_premium_tickets_issued += 1
-    st.session_state.mock_referral_buy_auth += 1
-
-    return True, "친구의 신규상장 ETF 매수 인증이 완료되어 꽝 없는 응모권 1장이 지급되었습니다."
+    st.session_state.share_link_copied = True
+    st.session_state.mock_share_link_created += 1
+    return True, "공유 링크가 생성되었습니다. 이 링크를 친구에게 공유할 수 있어요."
 
 
-def draw_with_ticket(ticket_type: str):
+def auto_issue_friend_rewards():
     """
-    ticket_type: normal 또는 premium
+    친구가 공유 링크를 통해 들어와 체크리스트를 완료하거나,
+    신규상장 ETF 매수 확인까지 이어졌을 때 일반 응모권을 자동 지급하는 구조.
+
+    실제 서비스에서는:
+    - 공유 링크 ref 추적
+    - 친구 계정/휴대폰 중복 방지
+    - 체크리스트 완료 로그
+    - 신규상장 ETF 매수 확인 또는 이벤트 인증 API
+    를 기반으로 자동 지급.
     """
-    if ticket_type == "normal":
-        if st.session_state.normal_tickets <= 0:
-            return False, None
+    if not st.session_state.shared_mbti:
+        return []
 
-        st.session_state.normal_tickets -= 1
-        st.session_state.used_normal_tickets += 1
-        result = random.choice(DRAW_PRIZES_NORMAL)
+    messages = []
 
-    elif ticket_type == "premium":
-        if st.session_state.premium_tickets <= 0:
-            return False, None
+    # 친구 체크리스트 완료 보상
+    completed_count = int(st.session_state.mock_friend_checklist_completed)
+    already_rewarded_check = int(st.session_state.friend_checklist_reward_count)
+    pending_check_rewards = max(0, completed_count - already_rewarded_check)
 
-        st.session_state.premium_tickets -= 1
-        st.session_state.used_premium_tickets += 1
-        result = random.choice(DRAW_PRIZES_PREMIUM)
+    for _ in range(pending_check_rewards):
+        ok, msg = issue_normal_ticket("공유받은 친구가 체크리스트를 완료하여")
 
-    else:
+        if ok:
+            st.session_state.friend_checklist_reward_count += 1
+            st.session_state.mock_referral_checklist_complete += 1
+            messages.append(msg)
+        else:
+            messages.append(msg)
+            break
+
+    # 친구 매수 확인 보상
+    buy_count = int(st.session_state.mock_friend_buy_confirmed)
+    already_rewarded_buy = int(st.session_state.friend_buy_reward_count)
+    pending_buy_rewards = max(0, buy_count - already_rewarded_buy)
+
+    for _ in range(pending_buy_rewards):
+        ok, msg = issue_normal_ticket("공유받은 친구의 신규상장 ETF 매수 확인이 완료되어")
+
+        if ok:
+            st.session_state.friend_buy_reward_count += 1
+            st.session_state.mock_referral_buy_confirm += 1
+            messages.append(msg)
+        else:
+            messages.append(msg)
+            break
+
+    return messages
+
+
+def draw_with_ticket():
+    """
+    일반 응모권으로만 뽑기 참여.
+    꽝 없는 응모권/프리미엄 응모권은 제거.
+    """
+    if st.session_state.normal_tickets <= 0:
         return False, None
+
+    st.session_state.normal_tickets -= 1
+    st.session_state.used_normal_tickets += 1
+
+    result = random.choice(DRAW_PRIZES_NORMAL)
 
     st.session_state.mock_draw_plays += 1
     st.session_state.last_draw_result = result
     st.session_state.draw_history.append({
-        "type": ticket_type,
+        "type": "normal",
         "title": result["title"],
         "time": now_text(),
     })
@@ -1927,15 +2107,53 @@ def ticket_summary_html():
     <div class="ticket-card">
     <div class="ticket-num">{st.session_state.normal_tickets}</div>
     <div class="ticket-label">일반 응모권</div>
-    <div class="ticket-sub">투자 MBTI 결과 공유 시 지급<br>꽝 포함</div>
+    <div class="ticket-sub">
+    결과 공유, 친구 체크리스트 완료, 친구 매수 확인 시 지급<br>
+    하루 최대 {EVENT_INFO["daily_ticket_limit"]}장
     </div>
-    <div class="ticket-card ticket-card-premium">
-    <div class="ticket-num">{st.session_state.premium_tickets}</div>
-    <div class="ticket-label">꽝 없는 응모권</div>
-    <div class="ticket-sub">친구 매수 인증 완료 시 지급<br>꽝 없음</div>
     </div>
     </div>
     """
+
+
+def friend_status_html():
+    return f"""
+    <div class="friend-status-grid">
+    <div class="friend-status-box">
+    <div class="friend-status-num">{st.session_state.mock_friend_link_visits}</div>
+    <div class="friend-status-label">공유 링크<br>접속</div>
+    </div>
+    <div class="friend-status-box">
+    <div class="friend-status-num">{st.session_state.mock_friend_checklist_completed}</div>
+    <div class="friend-status-label">친구 체크리스트<br>완료</div>
+    </div>
+    <div class="friend-status-box">
+    <div class="friend-status-num">{st.session_state.mock_friend_event_product_views}</div>
+    <div class="friend-status-label">신규상장 ETF<br>정보 확인</div>
+    </div>
+    <div class="friend-status-box">
+    <div class="friend-status-num">{st.session_state.mock_friend_buy_confirmed}</div>
+    <div class="friend-status-label">매수 확인<br>완료</div>
+    </div>
+    </div>
+    """
+
+
+def peer_etf_card_html(rank, etf, invest_code):
+    return f"""
+    <div class="peer-card">
+    <div class="peer-rank">{rank}위 · {invest_code} 유형</div>
+    <div class="peer-name">{etf["name"]}</div>
+    <div class="peer-desc">
+    비슷한 투자 MBTI 유형의 사용자가 많이 확인한 ETF입니다.<br>
+    {etf["desc"]}
+    </div>
+    </div>
+    """
+
+
+def get_peer_etf_codes(invest_code: str):
+    return PEER_ETF_BY_MBTI.get(invest_code, ["0190G0", "379800", "211900"])
 
 
 # =========================
@@ -2475,7 +2693,6 @@ def render_detail_tab_content(etf):
         </div>
         """)
 
-
 # =========================
 # 9. 페이지: 홈
 # =========================
@@ -2496,10 +2713,12 @@ def render_home():
 
     <div class="event-banner">
     <div class="badge-soft">EVENT</div>
-    <div class="event-title">투자 MBTI 확인하고<br>응모권 받는 새로운 참여 방법</div>
+    <div class="event-title">투자 MBTI 공유하고<br>응모권 받는 새로운 참여 방법</div>
     <div class="event-desc">
     KODEX 신규상장 ETF 뽑기 이벤트에<br>
-    내 투자 MBTI 결과 공유 기능을 연결했어요.
+    내 투자 MBTI 결과 공유 기능을 연결했어요.<br><br>
+    결과 공유, 친구 체크리스트 완료, 친구 매수 확인 시<br>
+    일반 응모권을 받을 수 있어요.
     </div>
     </div>
     """)
@@ -2552,7 +2771,8 @@ def render_home():
     기간: {EVENT_INFO["period"]}
     </div>
     <div class="insight">
-    CHECKPOINT 완료 후 이벤트 페이지에서 투자 MBTI 결과를 공유하면 일반 응모권을 받을 수 있어요.
+    CHECKPOINT 완료 후 이벤트 페이지에서 투자 MBTI 공유 링크를 만들고,
+    결과를 공유하면 일반 응모권을 받을 수 있어요.
     </div>
     </div>
     """)
@@ -2615,6 +2835,20 @@ def render_home():
             </div>
             """)
 
+    html("""
+    <div class="info-card">
+    <div class="info-title">이벤트 참여 방식</div>
+    <div class="point-desc">
+    1. 투자 MBTI 체크리스트 완료<br>
+    2. 이벤트 페이지에서 내 결과 공유 링크 생성<br>
+    3. 결과 공유 시 일반 응모권 1장 지급<br>
+    4. 친구가 링크로 들어와 체크리스트를 완료하면 일반 응모권 1장 추가 지급<br>
+    5. 친구가 본인 판단으로 신규상장 ETF 매수까지 이어지면 일반 응모권 1장 추가 지급<br><br>
+    ※ 응모권은 하루 최대 5장까지 받을 수 있도록 제한됩니다.
+    </div>
+    </div>
+    """)
+
     phone_footer()
     bottom_nav("home")
 
@@ -2665,7 +2899,8 @@ def render_checklist():
     <div class="question-title">{br(q["title"])}</div>
     <div class="question-guide">
     ETF 보기 전 나의 투자 성향을 확인해보세요.<br>
-    결과를 이벤트 페이지에서 공유하면 KODEX 뽑기 응모권을 받을 수 있어요.
+    체크리스트 완료 후 이벤트 페이지에서 결과를 공유하면<br>
+    KODEX 뽑기 응모권을 받을 수 있어요.
     </div>
     """)
 
@@ -2732,6 +2967,13 @@ def render_report():
     summary_html = "".join([f"<li>{line}</li>" for line in summary_lines])
     missed_html = "".join([f"<li>{x}</li>" for x in missed])
 
+    peer_codes = get_peer_etf_codes(invest["code"])
+    peer_cards_html = ""
+
+    for idx, code in enumerate(peer_codes[:3], start=1):
+        peer_etf = get_etf_by_code(code)
+        peer_cards_html += peer_etf_card_html(idx, peer_etf, invest["code"])
+
     phone_header()
 
     page_title_bar("KODEX CHECKPOINT", default_back="home")
@@ -2763,12 +3005,36 @@ def render_report():
     <div class="trait-grid">{trait_html}</div>
     </div>
 
+    <div class="info-card">
+    <div class="info-title">같은 {invest["code"]} 유형이 많이 확인한 ETF</div>
+    <div class="point-desc">
+    같은 투자 MBTI 유형의 사용자가 많이 확인한 KODEX 상품 예시입니다.<br>
+    실제 서비스에서는 상품 상세 진입, 찜, 저장, 매수 확인 데이터를 기반으로 자동 집계할 수 있습니다.
+    </div>
+    {peer_cards_html}
+    </div>
+    """)
+
+    c1, c2 = st.columns(2)
+
+    with c1:
+        first_peer = get_etf_by_code(peer_codes[0])
+        if st.button("같은 유형 ETF 확인", type="primary", use_container_width=True):
+            select_etf(first_peer["code"])
+
+    with c2:
+        if st.button("전체상품 보기", use_container_width=True):
+            go("products")
+
+    html(f"""
     <div class="event-banner">
     <div class="badge-soft">EVENT 연결</div>
     <div class="event-title">내 투자 MBTI 결과로<br>KODEX 뽑기 이벤트 참여하기</div>
     <div class="event-desc">
     결과 공유 버튼은 리포트가 아니라<br>
-    KODEX 신규상장 ETF 뽑기 이벤트 페이지 안에서 제공됩니다.
+    KODEX 신규상장 ETF 뽑기 이벤트 페이지 안에서 제공됩니다.<br><br>
+    이벤트 페이지에서 공유 링크를 만들고 결과를 공유하면<br>
+    일반 응모권을 받을 수 있어요.
     </div>
     </div>
     """)
@@ -2815,7 +3081,8 @@ def render_report():
     <div class="info-title">투자 MBTI 결과 활용</div>
     <div class="point-desc">
     투자 MBTI는 사용자가 ETF를 볼 때 어떤 판단 기준에 더 민감한지 보여주는 요약 지표입니다.<br>
-    기업은 전체 참여자의 투자 MBTI 분포와 이벤트 공유 데이터를 통해 20대가 어떤 성향으로 신규상장 ETF에 반응하는지 확인할 수 있습니다.
+    기업은 전체 참여자의 투자 MBTI 분포, 같은 유형이 많이 확인한 ETF, 이벤트 공유 데이터를 통해
+    20대가 어떤 성향으로 신규상장 ETF에 반응하는지 확인할 수 있습니다.
     </div>
     </div>
     """)
@@ -2823,24 +3090,17 @@ def render_report():
     c1, c2 = st.columns(2)
 
     with c1:
-        if st.button("전체상품에서 ETF 확인하기", use_container_width=True):
-            go("products")
-
-    with c2:
         if st.button("운영자 인사이트", use_container_width=True):
             go("insight")
-
-    c1, c2 = st.columns(2)
-
-    with c1:
-        if st.button("체크리스트 저장", use_container_width=True):
-            st.session_state.saved = True
-            st.session_state.mock_save_clicks += 1
-            st.success("체크리스트가 저장되었습니다.")
 
     with c2:
         if st.button("다시 체크하기", use_container_width=True):
             start()
+
+    if st.button("체크리스트 저장", use_container_width=True):
+        st.session_state.saved = True
+        st.session_state.mock_save_clicks += 1
+        st.success("체크리스트가 저장되었습니다.")
 
     phone_footer()
     bottom_nav("checkpoint")
@@ -2879,9 +3139,13 @@ def render_event_draw():
     <div class="info-card">
     <div class="info-title">내 응모권</div>
     <div class="point-desc">
-    투자 MBTI 결과 공유로 받은 일반 응모권과, 친구 매수 인증으로 받은 꽝 없는 응모권을 확인할 수 있어요.
+    모든 보상은 일반 응모권으로 통일됩니다.<br>
+    투자 MBTI 결과 공유, 친구 체크리스트 완료, 친구 매수 확인 시 일반 응모권을 받을 수 있어요.
     </div>
     {ticket_summary_html()}
+    <div class="note-text">
+    오늘 지급된 응모권: {st.session_state.daily_tickets_issued}장 / 하루 최대 {EVENT_INFO["daily_ticket_limit"]}장
+    </div>
     </div>
     """)
 
@@ -2902,6 +3166,7 @@ def render_event_draw():
     else:
         invest = get_invest_mbti(pct)
         habit = classify_habit(pct, weak)
+        share_link = make_share_link(invest["code"])
 
         html(f"""
         <div class="mbti-share-card">
@@ -2917,60 +3182,84 @@ def render_event_draw():
         <div class="info-card">
         <div class="info-title">결과 공유하고 응모권 받기</div>
         <div class="point-desc">
-        투자 MBTI 결과를 친구에게 공유하면 일반 응모권 1장을 받을 수 있어요.<br>
-        일반 응모권은 꽝이 포함될 수 있습니다.
+        아래 공유 링크를 친구에게 전달할 수 있어요.<br>
+        내 투자 MBTI 결과를 공유하면 일반 응모권 1장을 받을 수 있습니다.
+        </div>
+        <div class="share-link-box">
+        {share_link}
+        </div>
+        <div class="note-text">
+        실제 서비스에서는 이 링크에 사용자 ID, 추천인 ID, 캠페인 ID가 연결되어
+        친구의 체크리스트 완료와 매수 확인이 자동으로 추적됩니다.
         </div>
         </div>
         """)
 
-        if st.button("결과 공유하고 응모권 받기", type="primary", use_container_width=True):
-            ok, msg = issue_share_ticket()
+        c1, c2 = st.columns(2)
 
-            if ok:
-                st.success(msg)
-            else:
-                st.warning(msg)
+        with c1:
+            if st.button("링크 생성하기", use_container_width=True):
+                ok, msg = copy_share_link()
+
+                if ok:
+                    st.success(msg)
+                else:
+                    st.warning(msg)
+
+        with c2:
+            if st.button("결과 공유하고 응모권 받기", type="primary", use_container_width=True):
+                ok, msg = issue_share_ticket()
+
+                if ok:
+                    st.success(msg)
+                else:
+                    st.warning(msg)
+
+        if st.session_state.share_link_copied:
+            html("""
+            <div class="share-complete">
+            <div class="share-complete-title">공유 링크 생성 완료</div>
+            <div class="point-desc">
+            이 링크를 카카오톡, 문자, 인스타그램 프로필/스토리 링크 등으로 공유할 수 있어요.
+            </div>
+            </div>
+            """)
 
         if st.session_state.shared_mbti:
+            reward_messages = auto_issue_friend_rewards()
+
             html(f"""
             <div class="share-complete">
             <div class="share-complete-title">공유 완료!</div>
             <div class="point-desc">
             투자 MBTI 결과를 공유했어요.<br>
-            현재까지 공유로 받은 일반 응모권: {st.session_state.share_count}장<br>
-            이벤트 기간 내 최대 {EVENT_INFO["share_limit"]}장까지 받을 수 있어요.
+            현재까지 결과 공유로 받은 응모권: {st.session_state.share_count}장<br>
+            친구 체크리스트 완료 보상: {st.session_state.friend_checklist_reward_count}장<br>
+            친구 매수 확인 보상: {st.session_state.friend_buy_reward_count}장
             </div>
             </div>
             """)
+
+            for msg in reward_messages:
+                st.info(msg)
 
     html("""
     <div class="info-card">
     <div class="info-title">응모권으로 뽑기 참여</div>
     <div class="point-desc">
-    일반 응모권은 꽝이 포함될 수 있고, 꽝 없는 응모권은 친구의 신규상장 ETF 매수 인증 완료 시 제공되는 보상입니다.
+    보유한 일반 응모권으로 KODEX 신규상장 ETF 뽑기 이벤트에 참여할 수 있어요.<br>
+    일반 응모권에는 꽝이 포함될 수 있습니다.
     </div>
     </div>
     """)
 
-    c1, c2 = st.columns(2)
+    if st.button("응모권으로 뽑기", type="primary", use_container_width=True):
+        ok, result = draw_with_ticket()
 
-    with c1:
-        if st.button("일반 응모권으로 뽑기", use_container_width=True):
-            ok, result = draw_with_ticket("normal")
-
-            if ok:
-                st.session_state.last_draw_result = result
-            else:
-                st.warning("사용 가능한 일반 응모권이 없습니다.")
-
-    with c2:
-        if st.button("꽝 없는 응모권으로 뽑기", use_container_width=True):
-            ok, result = draw_with_ticket("premium")
-
-            if ok:
-                st.session_state.last_draw_result = result
-            else:
-                st.warning("사용 가능한 꽝 없는 응모권이 없습니다.")
+        if ok:
+            st.session_state.last_draw_result = result
+        else:
+            st.warning("사용 가능한 일반 응모권이 없습니다.")
 
     if st.session_state.last_draw_result:
         result = st.session_state.last_draw_result
@@ -2984,6 +3273,19 @@ def render_event_draw():
         """)
 
     html(f"""
+    <div class="referral-card">
+    <div class="referral-title">친구 참여 현황</div>
+    <div class="point-desc">
+    공유 링크를 받은 친구가 체크리스트를 완료하거나 신규상장 ETF 매수 확인까지 이어지면
+    공유자에게 일반 응모권이 자동 지급됩니다.<br><br>
+    사용자가 직접 인증 버튼을 누르는 구조가 아니라, 실제 서비스에서는 공유 링크 추적과 매수 확인 데이터로 자동 처리됩니다.
+    </div>
+    {friend_status_html()}
+    <div class="note-text">
+    프로토타입 예시 상태입니다. 실제 서비스에서는 계정 중복 방지, 동일 친구 중복 인정 제한, 하루 지급 한도 제한이 필요합니다.
+    </div>
+    </div>
+
     <div class="event-product-card">
     <div class="badge-red">신규상장 이벤트 대상</div>
     <div class="event-product-title">{event_etf["name"]}</div>
@@ -3008,42 +3310,35 @@ def render_event_draw():
         if st.button("전체상품 보기", use_container_width=True):
             go("products")
 
-    html("""
-    <div class="referral-card">
-    <div class="referral-title">친구 매수 인증 보상 구조</div>
-    <div class="point-desc">
-    공유받은 친구가 신규상장 ETF 정보를 확인하고, 본인 판단에 따라 매수 인증까지 완료하면
-    공유자에게 꽝 없는 응모권이 지급됩니다.<br><br>
-    ※ 프로토타입에서는 아래 버튼으로 친구 매수 인증 완료 상황을 시뮬레이션합니다.
-    </div>
-    </div>
-    """)
-
-    if st.button("프로토타입: 친구 매수 인증 완료 처리", use_container_width=True):
-        ok, msg = simulate_referral_buy_auth()
-
-        if ok:
-            st.success(msg)
-        else:
-            st.warning(msg)
-
     html(f"""
     <div class="info-card">
     <div class="info-title">응모권 지급 기준</div>
     <div class="event-rule-card">
-    <div class="event-rule-title">일반 응모권</div>
+    <div class="event-rule-title">1. 내 투자 MBTI 결과 공유</div>
     <div class="event-rule-desc">
-    투자 MBTI 결과 공유 시 지급 · 꽝 포함 · 이벤트 기간 최대 {EVENT_INFO["share_limit"]}장
+    이벤트 페이지에서 공유 링크를 생성하고 결과를 공유하면 일반 응모권 1장 지급
     </div>
     </div>
     <div class="event-rule-card">
-    <div class="event-rule-title">꽝 없는 응모권</div>
+    <div class="event-rule-title">2. 친구 체크리스트 완료</div>
     <div class="event-rule-desc">
-    공유받은 친구의 신규상장 ETF 매수 인증 완료 시 지급 · 꽝 없음 · 이벤트 기간 최대 {EVENT_INFO["premium_limit"]}장
+    공유받은 친구가 링크로 접속해 KODEX CHECKPOINT를 완료하면 일반 응모권 1장 지급
+    </div>
+    </div>
+    <div class="event-rule-card">
+    <div class="event-rule-title">3. 친구 신규상장 ETF 매수 확인</div>
+    <div class="event-rule-desc">
+    친구가 신규상장 ETF 정보를 확인한 뒤 본인 판단으로 매수까지 이어지고, 시스템에서 매수 확인이 완료되면 일반 응모권 1장 지급
+    </div>
+    </div>
+    <div class="event-rule-card">
+    <div class="event-rule-title">지급 제한</div>
+    <div class="event-rule-desc">
+    모든 경로 합산 하루 최대 {EVENT_INFO["daily_ticket_limit"]}장까지 지급 · 동일 친구 중복 인정 불가 · 본인 계정 간 공유 인정 불가
     </div>
     </div>
     <div class="note-text">
-    실제 서비스에서는 공유 링크 추적, 동일 계정 중복 방지, 매수 인증 API 또는 이벤트 인증 절차가 필요합니다.
+    실제 서비스에서는 공유 링크 추적, 동일 계정 중복 방지, 매수 확인 API 또는 이벤트 인증 절차가 필요합니다.
     </div>
     </div>
     """)
@@ -3158,13 +3453,15 @@ def render_products():
 
     if pct is not None:
         habit = classify_habit(pct, weak)
+        invest = get_invest_mbti(pct)
 
         html(f"""
         <div class="check-card">
         <div class="badge">REPORT 기반</div>
         <div class="check-title">{habit["type"]}을 위한<br>상품 확인 순서</div>
         <div class="check-desc">
-        각 ETF 카드에 표시된 ‘먼저 확인하면 좋은 항목’을 보고<br>
+        투자 MBTI {invest["code"]} 유형의 리포트와 상품 유형을 함께 반영했어요.<br>
+        각 ETF 카드에 표시된 ‘먼저 확인하면 좋은 항목’을 보고
         상품 상세에서 필요한 정보를 바로 찾아볼 수 있어요.
         </div>
         </div>
@@ -3397,7 +3694,8 @@ def render_insight():
     event_view_rate = round(st.session_state.mock_event_page_visits / total * 100, 1)
     share_rate = round(st.session_state.mock_share_clicks / total * 100, 1)
     draw_rate = round(st.session_state.mock_draw_plays / max(st.session_state.mock_general_tickets_issued, 1) * 100, 1)
-    referral_rate = round(st.session_state.mock_referral_buy_auth / max(st.session_state.mock_referral_visits, 1) * 100, 1)
+    friend_check_rate = round(st.session_state.mock_referral_checklist_complete / max(st.session_state.mock_referral_visits, 1) * 100, 1)
+    buy_confirm_rate = round(st.session_state.mock_referral_buy_confirm / max(st.session_state.mock_referral_visits, 1) * 100, 1)
 
     top_mbti = PARTICIPANT_MBTI_STATS[0]
     top_three = PARTICIPANT_MBTI_STATS[:3]
@@ -3405,7 +3703,8 @@ def render_insight():
     html(f"""
     <div class="section-title">기업 활용 데이터 예시</div>
     <div class="caption">
-    CHECKPOINT는 20대가 ETF를 보기 전 어떤 정보를 먼저 보고, 어떤 항목에서 이탈하는지 확인할 수 있는 데이터 접점이 될 수 있습니다.
+    CHECKPOINT는 20대가 ETF를 보기 전 어떤 정보를 먼저 보고,
+    어떤 성향의 사용자가 이벤트 공유와 신규상장 ETF 확인까지 이어지는지 확인할 수 있는 데이터 접점이 될 수 있습니다.
     </div>
 
     <div class="mini-kpi-grid">
@@ -3422,8 +3721,8 @@ def render_insight():
     <div class="mini-kpi-label">결과 공유율</div>
     </div>
     <div class="mini-kpi">
-    <div class="mini-kpi-num">{referral_rate}%</div>
-    <div class="mini-kpi-label">매수 인증 전환율</div>
+    <div class="mini-kpi-num">{buy_confirm_rate}%</div>
+    <div class="mini-kpi-label">매수 확인율</div>
     </div>
     </div>
 
@@ -3431,22 +3730,27 @@ def render_insight():
     <div class="info-title">수집 가능한 지표</div>
     <div class="point-desc">
     · 전체 참여자 중 투자 MBTI 비율<br>
+    · 같은 투자 MBTI 유형이 많이 확인한 ETF<br>
     · 이벤트 페이지 진입률<br>
+    · 공유 링크 생성 수<br>
     · 결과 공유 클릭률<br>
-    · 일반 응모권 지급 수<br>
-    · 뽑기 참여율<br>
     · 공유 링크 유입 수<br>
+    · 친구 체크리스트 완료 수<br>
+    · 친구 체크리스트 완료율<br>
     · 신규상장 ETF 상품정보 진입률<br>
-    · 매수 인증 완료 수<br>
-    · 꽝 없는 응모권 지급 수<br>
+    · 친구 매수 확인 수<br>
+    · 일반 응모권 총 지급 수<br>
+    · 하루 지급 한도 도달 사용자 수<br>
     · MBTI 유형별 공유율<br>
+    · MBTI 유형별 친구 유입률<br>
     · MBTI 유형별 신규상장 ETF 관심도
     </div>
     </div>
 
     <div class="insight">
     기업은 전체 참여자 중 어떤 투자 MBTI가 많은지뿐 아니라,
-    어떤 유형이 이벤트 페이지에 진입하고, 결과를 공유하고, 신규상장 ETF 정보 확인까지 이어지는지 파악할 수 있습니다.
+    어떤 유형이 자신의 결과를 공유하고, 친구 유입과 체크리스트 완료,
+    신규상장 ETF 정보 확인과 매수 확인까지 이어지는지 파악할 수 있습니다.
     </div>
     """)
 
@@ -3468,7 +3772,19 @@ def render_insight():
     html(event_metric_bar_html(
         "투자 MBTI 결과 공유율",
         min(share_rate, 100),
-        f"공유 클릭 {st.session_state.mock_share_clicks:,}회 · 일반 응모권 {st.session_state.mock_general_tickets_issued:,}장 지급"
+        f"공유 클릭 {st.session_state.mock_share_clicks:,}회 · 공유 링크 생성 {st.session_state.mock_share_link_created:,}회"
+    ))
+
+    html(event_metric_bar_html(
+        "친구 체크리스트 완료율",
+        min(friend_check_rate, 100),
+        f"공유 링크 유입 {st.session_state.mock_referral_visits:,}회 · 체크리스트 완료 {st.session_state.mock_referral_checklist_complete:,}회"
+    ))
+
+    html(event_metric_bar_html(
+        "친구 매수 확인율",
+        min(buy_confirm_rate, 100),
+        f"공유 링크 유입 {st.session_state.mock_referral_visits:,}회 · 매수 확인 {st.session_state.mock_referral_buy_confirm:,}회"
     ))
 
     html(event_metric_bar_html(
@@ -3477,18 +3793,14 @@ def render_insight():
         f"뽑기 참여 {st.session_state.mock_draw_plays:,}회"
     ))
 
-    html(event_metric_bar_html(
-        "친구 매수 인증 전환율",
-        min(referral_rate, 100),
-        f"공유 링크 유입 {st.session_state.mock_referral_visits:,}회 · 매수 인증 {st.session_state.mock_referral_buy_auth:,}회"
-    ))
-
     html(f"""
     <div class="info-card">
     <div class="info-title">응모권 지급 현황</div>
     <div class="point-desc">
-    일반 응모권 지급 수: {st.session_state.mock_general_tickets_issued:,}장<br>
-    꽝 없는 응모권 지급 수: {st.session_state.mock_premium_tickets_issued:,}장<br>
+    일반 응모권 총 지급 수: {st.session_state.mock_general_tickets_issued:,}장<br>
+    친구 체크리스트 완료 보상 수: {st.session_state.mock_referral_checklist_complete:,}장<br>
+    친구 매수 확인 보상 수: {st.session_state.mock_referral_buy_confirm:,}장<br>
+    하루 지급 한도 도달 사용자 수: {st.session_state.mock_daily_limit_users:,}명<br>
     신규상장 ETF 상품정보 진입 수: {st.session_state.mock_event_product_clicks:,}회
     </div>
     </div>
@@ -3520,7 +3832,7 @@ def render_insight():
     <div class="info-card">
     <div class="info-title">MBTI 유형별 이벤트 반응</div>
     <div class="point-desc">
-    어떤 투자 성향이 공유를 많이 하고, 어떤 유형이 신규상장 ETF 확인과 매수 인증까지 이어지는지 비교할 수 있습니다.
+    어떤 투자 성향이 공유를 많이 하고, 어떤 유형이 친구 체크리스트 완료와 신규상장 ETF 확인, 매수 확인까지 이어지는지 비교할 수 있습니다.
     </div>
     </div>
     """)
@@ -3530,8 +3842,9 @@ def render_insight():
         event_stats_df.rename(columns={
             "code": "투자 MBTI",
             "share_rate": "공유율(%)",
+            "friend_check_rate": "친구 체크리스트 완료율(%)",
             "event_view_rate": "이벤트 진입률(%)",
-            "buy_auth_rate": "매수 인증률(%)",
+            "buy_confirm_rate": "매수 확인율(%)",
         }),
         use_container_width=True,
         hide_index=True,
@@ -3541,9 +3854,10 @@ def render_insight():
     <div class="info-card">
     <div class="info-title">기업 활용 해석 예시</div>
     {point_item("트렌드 반응형 비중 확인", f"{top_three[0]['code']}형이 {top_three[0]['pct']}%로 가장 높게 나타나면, 20대가 성장 테마와 수익률에 빠르게 반응한다는 인사이트를 얻을 수 있습니다.")}
-    {point_item("공유율과 이벤트 진입률 확인", "투자 MBTI 결과 공유율을 통해 20대가 어떤 유형의 결과를 친구에게 보여주고 싶어하는지 확인할 수 있습니다.")}
+    {point_item("같은 유형이 많이 확인한 ETF 확인", "투자 MBTI별로 많이 확인한 ETF를 보면, 성향별 관심 상품과 콘텐츠 연결 방향을 파악할 수 있습니다.")}
+    {point_item("공유율과 친구 유입률 확인", "투자 MBTI 결과 공유율과 친구 체크리스트 완료율을 함께 보면, 어떤 유형의 결과가 자발적 확산으로 이어지는지 확인할 수 있습니다.")}
     {point_item("신규상장 ETF 관심도 확인", "이벤트 대상 ETF의 상품정보 진입률을 보면 이벤트가 단순 참여에서 상품 확인 행동으로 이어졌는지 판단할 수 있습니다.")}
-    {point_item("응모권 구조 효과 확인", "일반 응모권과 꽝 없는 응모권의 사용률을 비교하면 공유 보상과 전환 보상의 차이를 분석할 수 있습니다.")}
+    {point_item("응모권 구조 효과 확인", "결과 공유, 친구 체크리스트 완료, 친구 매수 확인이라는 단계별 응모권 지급 구조가 실제 행동 전환에 얼마나 기여하는지 분석할 수 있습니다.")}
     </div>
     """)
 
@@ -3552,6 +3866,7 @@ def render_insight():
         invest = get_invest_mbti(pct)
         missed = ", ".join(missed_items(pct, weak))
         favorites = ", ".join([get_etf_by_code(code)["name"] for code in st.session_state.favorite_codes]) or "없음"
+        peer_names = ", ".join([get_etf_by_code(code)["name"] for code in get_peer_etf_codes(invest["code"])])
 
         html(f"""
         <div class="info-card">
@@ -3560,9 +3875,10 @@ def render_insight():
         투자 MBTI: {invest["code"]} · {invest["title"]}<br>
         확인 유형: {habit["type"]} · {habit["mbti"]}<br>
         보완 항목: {missed}<br>
+        같은 유형이 많이 확인한 ETF: {peer_names}<br>
         찜한 ETF: {favorites}<br>
         보유 일반 응모권: {st.session_state.normal_tickets}장<br>
-        보유 꽝 없는 응모권: {st.session_state.premium_tickets}장
+        오늘 지급된 응모권: {st.session_state.daily_tickets_issued}장
         </div>
         </div>
         """)
