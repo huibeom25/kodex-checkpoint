@@ -1,4 +1,5 @@
 import textwrap
+import random
 from datetime import datetime
 
 import pandas as pd
@@ -171,6 +172,28 @@ html, body, [class*="css"] {
     color:#1155FF;
     border-radius:999px;
     padding:6px 11px;
+    font-size:12px;
+    font-weight:900;
+    margin-bottom:8px;
+}
+
+.badge-event {
+    display:inline-block;
+    background:#233BFF;
+    color:#fff;
+    border-radius:999px;
+    padding:6px 12px;
+    font-size:12px;
+    font-weight:900;
+    margin-bottom:8px;
+}
+
+.badge-red {
+    display:inline-block;
+    background:#FFF1F2;
+    color:#E11D48;
+    border-radius:999px;
+    padding:6px 12px;
     font-size:12px;
     font-weight:900;
     margin-bottom:8px;
@@ -610,6 +633,320 @@ html, body, [class*="css"] {
 }
 
 /* =========================
+   이벤트 / 응모권 / 뽑기
+========================= */
+.event-banner {
+    background:linear-gradient(135deg, #173BFF 0%, #0B1E68 100%);
+    border-radius:26px;
+    padding:21px 18px;
+    color:white;
+    margin:14px 0;
+    box-shadow:0 10px 26px rgba(17,85,255,0.22);
+    position:relative;
+    overflow:hidden;
+}
+
+.event-banner::after {
+    content:"🎟️";
+    position:absolute;
+    right:18px;
+    bottom:8px;
+    font-size:60px;
+    opacity:0.18;
+}
+
+.event-title {
+    font-size:22px;
+    line-height:1.35;
+    font-weight:900;
+    margin:8px 0 8px;
+}
+
+.event-desc {
+    font-size:13px;
+    line-height:1.55;
+    font-weight:700;
+    color:rgba(255,255,255,0.92);
+}
+
+.draw-hero {
+    background:#FFFFFF;
+    border-radius:30px;
+    padding:24px 18px 22px;
+    text-align:center;
+    border:1px solid #D9E7FF;
+    box-shadow:0 10px 28px rgba(15,23,42,0.06);
+    margin:12px 0 16px;
+    position:relative;
+    overflow:hidden;
+}
+
+.draw-hero::before {
+    content:"🪙";
+    position:absolute;
+    left:22px;
+    top:60px;
+    font-size:28px;
+    opacity:0.75;
+}
+
+.draw-hero::after {
+    content:"🪙";
+    position:absolute;
+    right:26px;
+    top:105px;
+    font-size:27px;
+    opacity:0.75;
+}
+
+.draw-event-label {
+    display:inline-block;
+    background:#2844C7;
+    color:#fff;
+    border-radius:999px;
+    padding:8px 14px;
+    font-size:13px;
+    font-weight:900;
+    margin-bottom:18px;
+}
+
+.draw-kodex {
+    font-size:43px;
+    line-height:1;
+    font-weight:900;
+    color:#2145FF;
+    letter-spacing:-1px;
+    margin-bottom:12px;
+}
+
+.draw-product-name {
+    font-size:26px;
+    line-height:1.25;
+    font-weight:900;
+    color:#2145FF;
+    letter-spacing:-1px;
+    margin-bottom:9px;
+}
+
+.draw-product-code {
+    color:#2145FF;
+    font-size:16px;
+    font-weight:900;
+    margin-bottom:20px;
+}
+
+.draw-copy {
+    color:#111827;
+    font-size:17px;
+    font-weight:800;
+    line-height:1.55;
+    margin-bottom:18px;
+}
+
+.draw-period {
+    color:#2145FF;
+    font-size:17px;
+    font-weight:900;
+    margin-bottom:14px;
+}
+
+.winner-ticker {
+    background:#EAF2FF;
+    border-radius:14px;
+    padding:11px 12px;
+    font-size:13px;
+    color:#1E3A8A;
+    font-weight:900;
+    display:inline-block;
+    margin:4px auto 6px;
+}
+
+.draw-machine {
+    background:linear-gradient(180deg, #8AB7FF 0%, #2E63FF 100%);
+    border-radius:28px 28px 14px 14px;
+    padding:18px;
+    color:white;
+    margin:12px 0 0;
+    border:3px solid #63A2FF;
+    box-shadow:inset 0 0 0 2px rgba(255,255,255,0.12);
+}
+
+.draw-machine-window {
+    background:#1E3A8A;
+    border-radius:22px;
+    padding:24px 14px;
+    font-size:18px;
+    font-weight:900;
+    line-height:1.5;
+}
+
+.ticket-grid {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin:12px 0;
+}
+
+.ticket-card {
+    background:#FFFFFF;
+    border:1.5px solid #D9E7FF;
+    border-radius:22px;
+    padding:16px 13px;
+    text-align:center;
+    box-shadow:0 6px 18px rgba(15,23,42,0.04);
+}
+
+.ticket-card-premium {
+    background:linear-gradient(135deg, #FFF7ED 0%, #FFFFFF 100%);
+    border:1.5px solid #FDBA74;
+}
+
+.ticket-num {
+    font-size:32px;
+    font-weight:900;
+    color:#1155FF;
+    line-height:1;
+}
+
+.ticket-card-premium .ticket-num {
+    color:#EA580C;
+}
+
+.ticket-label {
+    font-size:13px;
+    color:#111827;
+    font-weight:900;
+    margin-top:8px;
+}
+
+.ticket-sub {
+    font-size:11px;
+    color:#6B7280;
+    font-weight:700;
+    line-height:1.45;
+    margin-top:5px;
+}
+
+.mbti-share-card {
+    background:linear-gradient(135deg, #F7F4FF 0%, #FFFFFF 100%);
+    border:1.5px solid #D8CCFF;
+    border-radius:26px;
+    padding:20px 18px;
+    margin:14px 0;
+    text-align:center;
+}
+
+.share-code {
+    display:inline-block;
+    background:#EDEBFF;
+    color:#3C3489;
+    padding:12px 20px;
+    border-radius:16px;
+    font-size:25px;
+    font-weight:900;
+    letter-spacing:5px;
+    margin:8px 0 10px;
+}
+
+.share-complete {
+    background:linear-gradient(135deg, #ECFDF5 0%, #FFFFFF 100%);
+    border:1.5px solid #BBF7D0;
+    border-radius:24px;
+    padding:18px;
+    margin:12px 0;
+}
+
+.share-complete-title {
+    color:#15803D;
+    font-size:19px;
+    font-weight:900;
+    margin-bottom:8px;
+}
+
+.draw-result {
+    background:#fff;
+    border:1.5px solid #D9E7FF;
+    border-radius:26px;
+    padding:22px 18px;
+    margin:14px 0;
+    text-align:center;
+    box-shadow:0 8px 24px rgba(15,23,42,0.06);
+}
+
+.draw-result-emoji {
+    font-size:42px;
+    margin-bottom:8px;
+}
+
+.draw-result-title {
+    font-size:21px;
+    color:#111827;
+    font-weight:900;
+    margin-bottom:8px;
+}
+
+.draw-result-desc {
+    font-size:13px;
+    color:#6B7280;
+    font-weight:700;
+    line-height:1.55;
+}
+
+.event-product-card {
+    background:#fff;
+    border:1.5px solid #C8DBFF;
+    border-radius:26px;
+    padding:19px 18px;
+    margin:14px 0;
+    box-shadow:0 8px 22px rgba(15,23,42,0.05);
+}
+
+.event-product-title {
+    font-size:20px;
+    color:#2145FF;
+    font-weight:900;
+    line-height:1.3;
+    margin-bottom:7px;
+}
+
+.event-rule-card {
+    background:#F8FAFC;
+    border:1px solid #E5E7EB;
+    border-radius:20px;
+    padding:15px;
+    margin:10px 0;
+}
+
+.event-rule-title {
+    font-size:14px;
+    color:#111827;
+    font-weight:900;
+    margin-bottom:7px;
+}
+
+.event-rule-desc {
+    font-size:12px;
+    color:#6B7280;
+    line-height:1.55;
+    font-weight:700;
+}
+
+.referral-card {
+    background:linear-gradient(135deg, #FFF7ED 0%, #FFFFFF 100%);
+    border:1.5px solid #FDBA74;
+    border-radius:24px;
+    padding:18px;
+    margin:14px 0;
+}
+
+.referral-title {
+    color:#C2410C;
+    font-size:18px;
+    font-weight:900;
+    margin-bottom:7px;
+}
+
+/* =========================
    찜 / 하트
 ========================= */
 .heart-pill {
@@ -796,7 +1133,50 @@ def now_text():
 # 3. ETF 데이터
 # 실제 서비스에서는 공식/제휴 API로 대체
 # =========================
+EVENT_INFO = {
+    "title": "Kodex 신규상장 ETF 뽑기 이벤트",
+    "product_name": "KODEX 반도체타겟위클리커버드콜 ETF",
+    "product_code": "0190G0",
+    "period": "2026.05.11 ~ 2026.06.30",
+    "copy_1": "월말배당에 옵션 프리미엄 비과세까지 추구",
+    "copy_2": "반도체는 역시 삼성 Kodex ETF",
+    "official_url": "https://www.samsungfund.com/etf/lounge/draw-game-view.do?seq=68511719",
+    "share_limit": 5,
+    "premium_limit": 3,
+}
+
+DRAW_PRIZES_NORMAL = [
+    {"title": "아쉽지만 꽝이에요", "desc": "일반 응모권은 꽝이 포함될 수 있어요. 내일 다시 참여해보세요.", "emoji": "😢", "is_win": False},
+    {"title": "커피 쿠폰 응모 완료", "desc": "베가MGC커피 쿠폰 경품 응모가 완료되었어요.", "emoji": "☕", "is_win": True},
+    {"title": "편의점 상품권 응모 완료", "desc": "편의점 모바일 상품권 경품 응모가 완료되었어요.", "emoji": "🎁", "is_win": True},
+    {"title": "KODEX 굿즈 응모 완료", "desc": "KODEX 브랜드 굿즈 경품 응모가 완료되었어요.", "emoji": "📘", "is_win": True},
+]
+
+DRAW_PRIZES_PREMIUM = [
+    {"title": "꽝 없는 응모 완료", "desc": "프리미엄 응모권으로 경품 응모가 완료되었어요.", "emoji": "🎉", "is_win": True},
+    {"title": "커피 쿠폰 응모 완료", "desc": "베가MGC커피 쿠폰 경품 응모가 완료되었어요.", "emoji": "☕", "is_win": True},
+    {"title": "KODEX 굿즈 응모 완료", "desc": "KODEX 브랜드 굿즈 경품 응모가 완료되었어요.", "emoji": "📘", "is_win": True},
+]
+
+
 ETF_PRODUCTS = [
+    {
+        "name": "KODEX 반도체타겟위클리커버드콜 ETF",
+        "code": "0190G0",
+        "category": "covered_call",
+        "region": "국내",
+        "kind": "월배당·커버드콜",
+        "price": 10075,
+        "nav": 10062,
+        "volume": 812340,
+        "return_1w": 1.9,
+        "change": 55,
+        "change_pct": 0.55,
+        "tags": ["신규상장", "반도체", "커버드콜", "월말배당"],
+        "desc": "반도체 테마에 커버드콜 전략을 결합해 월말배당과 옵션 프리미엄을 추구하는 신규상장 ETF입니다.",
+        "default_likes": 3521,
+        "event_target": True,
+    },
     {
         "name": "KODEX 레버리지",
         "code": "122630",
@@ -812,6 +1192,7 @@ ETF_PRODUCTS = [
         "tags": ["레버리지", "변동성", "단기확인"],
         "desc": "국내 주식시장 일간 흐름을 레버리지 방식으로 추종하는 ETF입니다.",
         "default_likes": 1284,
+        "event_target": False,
     },
     {
         "name": "KODEX 반도체레버리지",
@@ -828,6 +1209,7 @@ ETF_PRODUCTS = [
         "tags": ["반도체", "레버리지", "테마"],
         "desc": "반도체 테마와 레버리지 특성이 결합된 ETF입니다.",
         "default_likes": 1732,
+        "event_target": False,
     },
     {
         "name": "KODEX KRX300 레버리지",
@@ -844,6 +1226,7 @@ ETF_PRODUCTS = [
         "tags": ["KRX300", "레버리지", "시장지수"],
         "desc": "KRX300 지수 흐름을 레버리지 방식으로 확인할 수 있는 ETF입니다.",
         "default_likes": 812,
+        "event_target": False,
     },
     {
         "name": "KODEX 증권",
@@ -860,6 +1243,7 @@ ETF_PRODUCTS = [
         "tags": ["증권", "섹터", "국내"],
         "desc": "국내 증권업종 흐름을 확인할 수 있는 섹터형 ETF입니다.",
         "default_likes": 604,
+        "event_target": False,
     },
     {
         "name": "KODEX 200IT TR",
@@ -876,6 +1260,7 @@ ETF_PRODUCTS = [
         "tags": ["IT", "TR", "국내"],
         "desc": "국내 IT 업종 중심의 지수 흐름을 확인할 수 있는 ETF입니다.",
         "default_likes": 945,
+        "event_target": False,
     },
     {
         "name": "KODEX 200ESG",
@@ -892,6 +1277,7 @@ ETF_PRODUCTS = [
         "tags": ["ESG", "KOSPI200", "국내"],
         "desc": "ESG 관점의 국내 대표지수형 ETF입니다.",
         "default_likes": 721,
+        "event_target": False,
     },
     {
         "name": "KODEX 미국S&P500",
@@ -908,6 +1294,7 @@ ETF_PRODUCTS = [
         "tags": ["S&P500", "미국", "환율"],
         "desc": "미국 대표지수인 S&P500 흐름을 확인할 수 있는 ETF입니다.",
         "default_likes": 2310,
+        "event_target": False,
     },
     {
         "name": "KODEX 미국나스닥100",
@@ -924,6 +1311,7 @@ ETF_PRODUCTS = [
         "tags": ["나스닥100", "미국", "기술주"],
         "desc": "미국 기술주 중심 지수 흐름을 확인할 수 있는 ETF입니다.",
         "default_likes": 2487,
+        "event_target": False,
     },
     {
         "name": "KODEX 배당성장",
@@ -940,6 +1328,7 @@ ETF_PRODUCTS = [
         "tags": ["배당", "분배금", "장기"],
         "desc": "배당 성장 관점에서 구성종목과 분배금 정보를 함께 확인하는 ETF입니다.",
         "default_likes": 1588,
+        "event_target": False,
     },
     {
         "name": "KODEX AI전력핵심설비",
@@ -956,6 +1345,7 @@ ETF_PRODUCTS = [
         "tags": ["AI전력", "테마", "변동성"],
         "desc": "AI 전력 인프라 관련 기업에 집중된 테마형 ETF입니다.",
         "default_likes": 1944,
+        "event_target": False,
     },
 ]
 
@@ -1072,6 +1462,19 @@ PARTICIPANT_MBTI_STATS = [
 
 
 # =========================
+# 3-3. 이벤트 성과 예시 데이터
+# 실제 서비스에서는 이벤트 로그 / 공유 링크 / 인증 데이터를 기반으로 집계
+# =========================
+EVENT_MBTI_STATS = [
+    {"code": "GCLI", "share_rate": 24, "event_view_rate": 41, "buy_auth_rate": 7},
+    {"code": "GCQI", "share_rate": 21, "event_view_rate": 38, "buy_auth_rate": 6},
+    {"code": "SDLP", "share_rate": 12, "event_view_rate": 29, "buy_auth_rate": 5},
+    {"code": "GDLP", "share_rate": 16, "event_view_rate": 33, "buy_auth_rate": 6},
+    {"code": "SCLP", "share_rate": 11, "event_view_rate": 27, "buy_auth_rate": 4},
+]
+
+
+# =========================
 # 4. 질문 데이터
 # =========================
 questions = [
@@ -1151,7 +1554,7 @@ defaults = {
     "page": "home",
     "q_idx": 0,
     "answers": {},
-    "selected_etf_code": "379800",
+    "selected_etf_code": "0190G0",
     "sort_metric": "1주 수익률",
     "sort_order": "높은 순",
     "selected_region": "전체",
@@ -1161,11 +1564,29 @@ defaults = {
     "product_tab": "투자포인트",
     "history": [],
 
-    # 운영자 인사이트용 프로토타입 지표
+    # 이벤트 / 응모권 상태
+    "shared_mbti": False,
+    "share_count": 0,
+    "normal_tickets": 0,
+    "premium_tickets": 0,
+    "used_normal_tickets": 0,
+    "used_premium_tickets": 0,
+    "last_draw_result": None,
+    "draw_history": [],
+
+    # 프로토타입용 이벤트 지표
     "mock_total_participants": 1260,
     "mock_save_clicks": 301,
     "mock_favorite_clicks": 512,
     "mock_product_clicks": 684,
+    "mock_event_page_visits": 418,
+    "mock_share_clicks": 176,
+    "mock_general_tickets_issued": 176,
+    "mock_premium_tickets_issued": 38,
+    "mock_draw_plays": 121,
+    "mock_referral_visits": 94,
+    "mock_referral_buy_auth": 38,
+    "mock_event_product_clicks": 147,
 }
 
 for key, value in defaults.items():
@@ -1213,10 +1634,21 @@ def start():
     st.rerun()
 
 
+def open_event_page():
+    st.session_state.mock_event_page_visits += 1
+    go("event_draw")
+
+
 def select_etf(code: str):
     st.session_state.selected_etf_code = code
     st.session_state.product_tab = "투자포인트"
     st.session_state.mock_product_clicks += 1
+
+    etf = get_etf_by_code(code)
+
+    if etf.get("event_target"):
+        st.session_state.mock_event_product_clicks += 1
+
     go("product_detail")
 
 
@@ -1225,6 +1657,84 @@ def get_etf_by_code(code: str):
         if item["code"] == code:
             return item
     return ETF_PRODUCTS[0]
+
+
+def get_event_etf():
+    for item in ETF_PRODUCTS:
+        if item.get("event_target"):
+            return item
+    return ETF_PRODUCTS[0]
+
+
+def issue_share_ticket():
+    """
+    프로토타입용 공유 완료 처리.
+    실제 서비스에서는 카카오톡/인스타/링크 공유 완료 콜백과 연결 가능.
+    """
+    if len(st.session_state.answers) < len(questions):
+        return False, "투자 MBTI 결과가 아직 없어요. 먼저 CHECKPOINT를 완료해주세요."
+
+    if st.session_state.share_count >= EVENT_INFO["share_limit"]:
+        return False, f"이벤트 기간 내 공유 응모권은 최대 {EVENT_INFO['share_limit']}장까지 받을 수 있어요."
+
+    st.session_state.shared_mbti = True
+    st.session_state.share_count += 1
+    st.session_state.normal_tickets += 1
+    st.session_state.mock_share_clicks += 1
+    st.session_state.mock_general_tickets_issued += 1
+
+    return True, "투자 MBTI 결과 공유가 완료되어 일반 응모권 1장이 지급되었습니다."
+
+
+def simulate_referral_buy_auth():
+    """
+    프로토타입용 친구 매수 인증 완료 처리.
+    실제 서비스에서는 공유 링크 추적, 신규상장 ETF 정보 확인, 매수 인증 API/이벤트 인증과 연결 필요.
+    """
+    issued_total = st.session_state.premium_tickets + st.session_state.used_premium_tickets
+
+    if issued_total >= EVENT_INFO["premium_limit"]:
+        return False, f"꽝 없는 응모권은 이벤트 기간 최대 {EVENT_INFO['premium_limit']}장까지 받을 수 있어요."
+
+    st.session_state.premium_tickets += 1
+    st.session_state.mock_premium_tickets_issued += 1
+    st.session_state.mock_referral_buy_auth += 1
+
+    return True, "친구의 신규상장 ETF 매수 인증이 완료되어 꽝 없는 응모권 1장이 지급되었습니다."
+
+
+def draw_with_ticket(ticket_type: str):
+    """
+    ticket_type: normal 또는 premium
+    """
+    if ticket_type == "normal":
+        if st.session_state.normal_tickets <= 0:
+            return False, None
+
+        st.session_state.normal_tickets -= 1
+        st.session_state.used_normal_tickets += 1
+        result = random.choice(DRAW_PRIZES_NORMAL)
+
+    elif ticket_type == "premium":
+        if st.session_state.premium_tickets <= 0:
+            return False, None
+
+        st.session_state.premium_tickets -= 1
+        st.session_state.used_premium_tickets += 1
+        result = random.choice(DRAW_PRIZES_PREMIUM)
+
+    else:
+        return False, None
+
+    st.session_state.mock_draw_plays += 1
+    st.session_state.last_draw_result = result
+    st.session_state.draw_history.append({
+        "type": ticket_type,
+        "title": result["title"],
+        "time": now_text(),
+    })
+
+    return True, result
 
 
 def phone_header():
@@ -1279,13 +1789,14 @@ def bottom_nav(active="home"):
     </div>
     """)
 
-    cols = st.columns(4)
+    cols = st.columns(5)
 
     nav_items = [
         ("홈", "home"),
-        ("전체상품", "products"),
+        ("상품", "products"),
         ("체크", "checkpoint"),
-        ("투자정보", "insight"),
+        ("이벤트", "event_draw"),
+        ("인사이트", "insight"),
     ]
 
     for col, (label, page) in zip(cols, nav_items):
@@ -1298,12 +1809,20 @@ def bottom_nav(active="home"):
                         go("report")
                     else:
                         start()
+                elif page == "event_draw":
+                    open_event_page()
                 else:
                     go(page)
 
 
 def tag_html(tags):
     return "".join([f'<span class="tag">{tag}</span>' for tag in tags])
+
+
+def event_target_badge_html(etf):
+    if etf.get("event_target"):
+        return '<span class="badge-red">신규상장 이벤트 대상</span>'
+    return ""
 
 
 def score_bar(label, value):
@@ -1384,6 +1903,37 @@ def stat_bar_html(code, name, pct, desc=None):
     </div>
     <div class="stat-bg"><div class="stat-fill" style="width:{pct}%;"></div></div>
     {desc_html}
+    </div>
+    """
+
+
+def event_metric_bar_html(label, value, desc=None):
+    desc_html = f'<div class="stat-desc">{desc}</div>' if desc else ""
+    return f"""
+    <div class="stat-card">
+    <div class="stat-head">
+    <div class="stat-name">{label}</div>
+    <div class="stat-pct">{value}%</div>
+    </div>
+    <div class="stat-bg"><div class="stat-fill" style="width:{value}%;"></div></div>
+    {desc_html}
+    </div>
+    """
+
+
+def ticket_summary_html():
+    return f"""
+    <div class="ticket-grid">
+    <div class="ticket-card">
+    <div class="ticket-num">{st.session_state.normal_tickets}</div>
+    <div class="ticket-label">일반 응모권</div>
+    <div class="ticket-sub">투자 MBTI 결과 공유 시 지급<br>꽝 포함</div>
+    </div>
+    <div class="ticket-card ticket-card-premium">
+    <div class="ticket-num">{st.session_state.premium_tickets}</div>
+    <div class="ticket-label">꽝 없는 응모권</div>
+    <div class="ticket-sub">친구 매수 인증 완료 시 지급<br>꽝 없음</div>
+    </div>
     </div>
     """
 
@@ -1601,6 +2151,7 @@ def category_priority(category):
         "dividend": ["분배금", "분배 기준", "총보수", "유의사항"],
         "theme": ["테마 집중도", "상위 구성종목", "변동성", "수익률 기간"],
         "leveraged": ["일간 추종 구조", "변동성", "단기 수익률 기간", "유의사항"],
+        "covered_call": ["커버드콜 전략", "분배금", "상위 구성종목", "유의사항"],
     }
 
     return category_map.get(category, ["기초지수", "구성종목", "총보수"])
@@ -1638,11 +2189,14 @@ def checkpoint_to_tab(item):
         "기준가": "기준가",
         "거래량": "상단 거래량",
         "환율 영향": "상품정보 / 관련콘텐츠",
-        "분배금": "분배금 / 상품정보",
-        "분배 기준": "분배금 / 상품정보",
+        "분배금": "상품정보 / 관련콘텐츠",
+        "분배 기준": "상품정보 / 관련콘텐츠",
         "테마 집중도": "투자포인트 / 구성종목(PDF)",
         "변동성": "수익률 / 기준가",
         "일간 추종 구조": "상품정보 / 유의사항",
+        "커버드콜 전략": "상품정보 / 관련콘텐츠",
+        "옵션 프리미엄": "상품정보 / 관련콘텐츠",
+        "월말배당": "상품정보 / 관련콘텐츠",
         "투자포인트": "투자포인트",
         "상품정보": "상품정보",
     }
@@ -1652,7 +2206,7 @@ def checkpoint_to_tab(item):
 
 def checkpoint_desc(item, etf):
     desc = {
-        "기초지수": f"{etf['name']}가 어떤 지수를 따라가는지 확인합니다.",
+        "기초지수": f"{etf['name']}가 어떤 지수나 전략을 따라가는지 확인합니다.",
         "해외지수": "해외 시장 지수를 기준으로 움직이는 상품인지 확인합니다.",
         "구성종목": "ETF 안에 어떤 기업과 산업이 포함되어 있는지 확인합니다.",
         "상위 구성종목": "상위 종목 비중이 특정 기업에 몰려 있는지 확인합니다.",
@@ -1670,6 +2224,9 @@ def checkpoint_desc(item, etf):
         "테마 집중도": "특정 테마나 산업에 집중된 정도를 확인합니다.",
         "변동성": "테마형·레버리지 상품은 가격 변동이 커질 수 있어 기간별 흐름을 확인합니다.",
         "일간 추종 구조": "레버리지 상품은 일간 수익률을 추종하는 구조인지 확인합니다.",
+        "커버드콜 전략": "커버드콜 구조가 수익과 손실 가능성에 어떤 영향을 주는지 확인합니다.",
+        "옵션 프리미엄": "옵션 프리미엄이 분배 재원과 수익 구조에 어떤 역할을 하는지 확인합니다.",
+        "월말배당": "월말배당의 지급 기준과 지속 가능성을 확인합니다.",
         "투자포인트": "상품의 핵심 특징과 투자 포인트를 먼저 확인합니다.",
         "상품정보": "상품 구조, 총보수, 유의사항을 확인합니다.",
     }
@@ -1697,6 +2254,9 @@ def checkpoint_reason(item, etf, pct=None):
         "테마 집중도": "테마형 ETF는 특정 산업이나 이슈에 집중되어 변동성이 커질 수 있습니다.",
         "변동성": "변동성이 큰 상품은 단기 수익률만 보고 판단하면 위험을 과소평가할 수 있습니다.",
         "일간 추종 구조": "레버리지 ETF는 장기 누적 수익률이 단순 배수로 움직이지 않을 수 있어 구조 확인이 필요합니다.",
+        "커버드콜 전략": "커버드콜 ETF는 상승장에서 수익이 제한될 수 있고, 시장 하락 위험은 남을 수 있어 구조 확인이 필요합니다.",
+        "옵션 프리미엄": "옵션 프리미엄은 분배 재원으로 활용될 수 있지만, 상품의 전체 수익 구조와 함께 이해해야 합니다.",
+        "월말배당": "월말배당은 매력적으로 보일 수 있지만, 분배금 지급 기준과 지속 가능성을 함께 확인해야 합니다.",
         "투자포인트": "투자포인트는 상품의 핵심 특징을 빠르게 파악하는 출발점입니다.",
         "상품정보": "상품정보는 총보수, 과세, 유의사항 등 기본 확인 항목이 모이는 영역입니다.",
     }
@@ -1723,6 +2283,8 @@ def checkpoint_reason(item, etf, pct=None):
         product_reason = " 또한 해외지수형 ETF는 해외 시장과 환율 영향을 함께 받을 수 있습니다."
     elif etf["category"] == "dividend":
         product_reason = " 또한 배당형 ETF는 분배금뿐 아니라 구성종목과 분배 기준을 함께 확인해야 합니다."
+    elif etf["category"] == "covered_call":
+        product_reason = " 또한 이 상품은 신규상장 커버드콜 ETF이므로 반도체 테마, 분배 구조, 옵션 전략, 유의사항을 함께 확인해야 합니다."
 
     return official_reason.get(item, "ETF 확인을 위해 필요한 기본 항목입니다.") + user_reason + product_reason
 
@@ -1760,6 +2322,15 @@ def filter_and_sort_products(df):
 
 def get_sample_holdings(etf):
     name = etf["name"]
+
+    if "반도체타겟" in name:
+        return pd.DataFrame([
+            {"종목명": "삼성전자", "비중(%)": 25.4},
+            {"종목명": "SK하이닉스", "비중(%)": 22.8},
+            {"종목명": "한미반도체", "비중(%)": 8.9},
+            {"종목명": "리노공업", "비중(%)": 5.6},
+            {"종목명": "DB하이텍", "비중(%)": 4.7},
+        ])
 
     if "미국S&P500" in name:
         return pd.DataFrame([
@@ -1830,18 +2401,27 @@ def render_detail_tab_content(etf):
         <div class="info-title">투자포인트</div>
         {point_item("이 ETF가 어떤 상품인지", etf["desc"])}
         {point_item("핵심 확인 포인트", f"{etf['name']}는 {etf['region']} · {etf['kind']} 유형 ETF입니다. 먼저 어떤 지수·테마를 추종하는지 확인해보세요.")}
-        {point_item("이런 경우 더 확인", "최근 수익률이 좋아 보여도, 구성종목과 비용·유의사항을 함께 보면 더 기준 있게 볼 수 있어요.")}
+        {point_item("이런 경우 더 확인", "최근 수익률이나 이벤트 문구만 보고 판단하기보다, 구성종목·분배금·비용·유의사항을 함께 보면 더 기준 있게 볼 수 있어요.")}
         <div class="note-text">프로토타입 예시 화면입니다.</div>
         </div>
         """)
 
     elif tab == "상품정보":
+        extra = ""
+
+        if etf.get("event_target"):
+            extra = point_item(
+                "신규상장 이벤트 연결",
+                "이 상품은 KODEX 신규상장 ETF 뽑기 이벤트 대상 상품으로 설정한 프로토타입 예시입니다. 실제 서비스에서는 공식 이벤트 조건과 상품정보가 연결됩니다."
+            )
+
         html(f"""
         <div class="info-card">
         <div class="info-title">상품정보</div>
         {point_item("상품 기본 정보", f"상품명: {etf['name']} / 종목코드: {etf['code']}")}
         {point_item("상품 분류", f"{etf['region']} · {etf['kind']} · 카테고리 {etf['category']}")}
         {point_item("총보수·유의사항", "실제 서비스에서는 총보수, 과세, 추적오차, 원금손실 가능성 등의 공식 데이터가 연결됩니다.")}
+        {extra}
         </div>
         """)
 
@@ -1891,6 +2471,7 @@ def render_detail_tab_content(etf):
         {point_item("ETF 기초 설명", f"{etf['name']}를 처음 보는 사용자를 위한 기초 설명 콘텐츠")}
         {point_item("구성종목 쉽게 보기", "이 ETF 안에 어떤 기업이 담겨 있는지 카드형 콘텐츠로 설명")}
         {point_item("비용·유의사항 가이드", "총보수, 추적오차, 원금손실 가능성을 쉽게 설명하는 콘텐츠")}
+        {point_item("이벤트 참여 가이드", "투자 MBTI 결과를 이벤트 페이지에서 공유하면 일반 응모권을 받을 수 있다는 흐름을 안내")}
         </div>
         """)
 
@@ -1913,6 +2494,27 @@ def render_home():
     <div class="hero-link">투자 MBTI 확인하고 ETF 체크하기 →</div>
     </div>
 
+    <div class="event-banner">
+    <div class="badge-soft">EVENT</div>
+    <div class="event-title">투자 MBTI 확인하고<br>응모권 받는 새로운 참여 방법</div>
+    <div class="event-desc">
+    KODEX 신규상장 ETF 뽑기 이벤트에<br>
+    내 투자 MBTI 결과 공유 기능을 연결했어요.
+    </div>
+    </div>
+    """)
+
+    c1, c2 = st.columns(2)
+
+    with c1:
+        if st.button("투자 MBTI 확인하기", type="primary", use_container_width=True):
+            start()
+
+    with c2:
+        if st.button("이벤트 보러가기", use_container_width=True):
+            open_event_page()
+
+    html("""
     <div class="search-box">🔍 &nbsp; 상품명 혹은 종목코드 검색</div>
 
     <div class="check-card">
@@ -1926,9 +2528,6 @@ def render_home():
     </div>
     """)
 
-    if st.button("투자 MBTI 확인하기", type="primary", use_container_width=True):
-        start()
-
     c1, c2 = st.columns(2)
 
     with c1:
@@ -1939,6 +2538,35 @@ def render_home():
         if st.button("운영자 인사이트", use_container_width=True):
             go("insight")
 
+    event_etf = get_event_etf()
+
+    html(f"""
+    <div class="section-title">진행 중인 이벤트</div>
+    <div class="event-product-card">
+    <div class="badge-event">Kodex 신규상장 ETF 뽑기 이벤트</div>
+    <div class="event-product-title">{event_etf["name"]}</div>
+    <div class="product-code">{event_etf["code"]}</div>
+    <div class="product-meta" style="margin-top:8px;">
+    {EVENT_INFO["copy_1"]}<br>
+    {EVENT_INFO["copy_2"]}<br>
+    기간: {EVENT_INFO["period"]}
+    </div>
+    <div class="insight">
+    CHECKPOINT 완료 후 이벤트 페이지에서 투자 MBTI 결과를 공유하면 일반 응모권을 받을 수 있어요.
+    </div>
+    </div>
+    """)
+
+    c1, c2 = st.columns(2)
+
+    with c1:
+        if st.button("이벤트 페이지로 이동", type="primary", use_container_width=True):
+            open_event_page()
+
+    with c2:
+        if st.button("이벤트 ETF 확인", use_container_width=True):
+            select_etf(event_etf["code"])
+
     df = load_etf_products()
     top = df.sort_values("return_1w", ascending=False).head(1).iloc[0]
 
@@ -1947,6 +2575,7 @@ def render_home():
     <div class="product-card">
     <div style="display:flex; justify-content:space-between; gap:10px; align-items:flex-start;">
     <div>
+    {event_target_badge_html(top)}
     <div class="product-name">{top['name']}</div>
     <div class="product-meta">{top['desc']}</div>
     </div>
@@ -2034,7 +2663,10 @@ def render_checklist():
 
     <div class="step-chip">{q["step"]}</div>
     <div class="question-title">{br(q["title"])}</div>
-    <div class="question-guide">가장 가까운 항목을 선택해주세요.</div>
+    <div class="question-guide">
+    ETF 보기 전 나의 투자 성향을 확인해보세요.<br>
+    결과를 이벤트 페이지에서 공유하면 KODEX 뽑기 응모권을 받을 수 있어요.
+    </div>
     """)
 
     labels = [f"{code}. {text}" for code, text, scores, weakness in q["options"]]
@@ -2131,6 +2763,20 @@ def render_report():
     <div class="trait-grid">{trait_html}</div>
     </div>
 
+    <div class="event-banner">
+    <div class="badge-soft">EVENT 연결</div>
+    <div class="event-title">내 투자 MBTI 결과로<br>KODEX 뽑기 이벤트 참여하기</div>
+    <div class="event-desc">
+    결과 공유 버튼은 리포트가 아니라<br>
+    KODEX 신규상장 ETF 뽑기 이벤트 페이지 안에서 제공됩니다.
+    </div>
+    </div>
+    """)
+
+    if st.button("내 결과로 이벤트 참여하기", type="primary", use_container_width=True):
+        open_event_page()
+
+    html(f"""
     <div class="result-main">
     <div style="font-weight:900;margin-bottom:10px;">ETF 확인 습관 유형</div>
     <div class="result-emoji">{habit["emoji"]}</div>
@@ -2169,7 +2815,7 @@ def render_report():
     <div class="info-title">투자 MBTI 결과 활용</div>
     <div class="point-desc">
     투자 MBTI는 사용자가 ETF를 볼 때 어떤 판단 기준에 더 민감한지 보여주는 요약 지표입니다.<br>
-    기업은 전체 참여자의 투자 MBTI 분포를 통해 20대가 수익률, 안정성, 장기성, 직관성 중 어떤 성향에 가까운지 확인할 수 있습니다.
+    기업은 전체 참여자의 투자 MBTI 분포와 이벤트 공유 데이터를 통해 20대가 어떤 성향으로 신규상장 ETF에 반응하는지 확인할 수 있습니다.
     </div>
     </div>
     """)
@@ -2177,7 +2823,7 @@ def render_report():
     c1, c2 = st.columns(2)
 
     with c1:
-        if st.button("전체상품에서 ETF 확인하기", type="primary", use_container_width=True):
+        if st.button("전체상품에서 ETF 확인하기", use_container_width=True):
             go("products")
 
     with c2:
@@ -2201,6 +2847,212 @@ def render_report():
 
 
 # =========================
+# 11-1. 페이지: KODEX 신규상장 ETF 뽑기 이벤트
+# =========================
+def render_event_draw():
+    raw, pct, weak = safe_scores()
+    event_etf = get_event_etf()
+
+    phone_header()
+
+    page_title_bar("KODEX 뽑기 이벤트", default_back="home")
+
+    html(f"""
+    <div class="draw-hero">
+    <div class="draw-event-label">{EVENT_INFO["title"]}</div>
+    <div class="draw-kodex">KODEX</div>
+    <div class="draw-product-name">반도체타겟위클리<br>커버드콜 ETF</div>
+    <div class="draw-product-code">(종목코드 {EVENT_INFO["product_code"]})</div>
+    <div class="draw-copy">
+    {EVENT_INFO["copy_1"]}<br>
+    {EVENT_INFO["copy_2"]}
+    </div>
+    <div class="draw-period">{EVENT_INFO["period"]}</div>
+    <div class="winner-ticker">박**님 🪙 메가MGC커피 당첨 · 5시간 전</div>
+    <div class="draw-machine">
+    <div class="draw-machine-window">
+    당첨 아이템이 든<br>인형을 뽑아보세요!
+    </div>
+    </div>
+    </div>
+
+    <div class="info-card">
+    <div class="info-title">내 응모권</div>
+    <div class="point-desc">
+    투자 MBTI 결과 공유로 받은 일반 응모권과, 친구 매수 인증으로 받은 꽝 없는 응모권을 확인할 수 있어요.
+    </div>
+    {ticket_summary_html()}
+    </div>
+    """)
+
+    if pct is None:
+        html("""
+        <div class="mbti-share-card">
+        <div class="badge-event">CHECKPOINT 필요</div>
+        <div class="info-title">아직 투자 MBTI 결과가 없어요</div>
+        <div class="point-desc">
+        응모권을 받으려면 먼저 KODEX CHECKPOINT를 완료하고 투자 MBTI 결과를 확인해주세요.
+        </div>
+        </div>
+        """)
+
+        if st.button("투자 MBTI 먼저 확인하기", type="primary", use_container_width=True):
+            start()
+
+    else:
+        invest = get_invest_mbti(pct)
+        habit = classify_habit(pct, weak)
+
+        html(f"""
+        <div class="mbti-share-card">
+        <div class="badge-event">내 투자 MBTI 결과</div>
+        <div class="share-code">{invest["code"]}</div>
+        <div class="invest-type">{invest["title"]}</div>
+        <div class="result-desc">
+        {invest["desc"]}<br><br>
+        ETF 확인 습관은 <b>{habit["type"]}</b>에 가까워요.
+        </div>
+        </div>
+
+        <div class="info-card">
+        <div class="info-title">결과 공유하고 응모권 받기</div>
+        <div class="point-desc">
+        투자 MBTI 결과를 친구에게 공유하면 일반 응모권 1장을 받을 수 있어요.<br>
+        일반 응모권은 꽝이 포함될 수 있습니다.
+        </div>
+        </div>
+        """)
+
+        if st.button("결과 공유하고 응모권 받기", type="primary", use_container_width=True):
+            ok, msg = issue_share_ticket()
+
+            if ok:
+                st.success(msg)
+            else:
+                st.warning(msg)
+
+        if st.session_state.shared_mbti:
+            html(f"""
+            <div class="share-complete">
+            <div class="share-complete-title">공유 완료!</div>
+            <div class="point-desc">
+            투자 MBTI 결과를 공유했어요.<br>
+            현재까지 공유로 받은 일반 응모권: {st.session_state.share_count}장<br>
+            이벤트 기간 내 최대 {EVENT_INFO["share_limit"]}장까지 받을 수 있어요.
+            </div>
+            </div>
+            """)
+
+    html("""
+    <div class="info-card">
+    <div class="info-title">응모권으로 뽑기 참여</div>
+    <div class="point-desc">
+    일반 응모권은 꽝이 포함될 수 있고, 꽝 없는 응모권은 친구의 신규상장 ETF 매수 인증 완료 시 제공되는 보상입니다.
+    </div>
+    </div>
+    """)
+
+    c1, c2 = st.columns(2)
+
+    with c1:
+        if st.button("일반 응모권으로 뽑기", use_container_width=True):
+            ok, result = draw_with_ticket("normal")
+
+            if ok:
+                st.session_state.last_draw_result = result
+            else:
+                st.warning("사용 가능한 일반 응모권이 없습니다.")
+
+    with c2:
+        if st.button("꽝 없는 응모권으로 뽑기", use_container_width=True):
+            ok, result = draw_with_ticket("premium")
+
+            if ok:
+                st.session_state.last_draw_result = result
+            else:
+                st.warning("사용 가능한 꽝 없는 응모권이 없습니다.")
+
+    if st.session_state.last_draw_result:
+        result = st.session_state.last_draw_result
+
+        html(f"""
+        <div class="draw-result">
+        <div class="draw-result-emoji">{result["emoji"]}</div>
+        <div class="draw-result-title">{result["title"]}</div>
+        <div class="draw-result-desc">{result["desc"]}</div>
+        </div>
+        """)
+
+    html(f"""
+    <div class="event-product-card">
+    <div class="badge-red">신규상장 이벤트 대상</div>
+    <div class="event-product-title">{event_etf["name"]}</div>
+    <div class="product-code">{event_etf["code"]}</div>
+    <div class="product-meta">
+    {event_etf["desc"]}
+    </div>
+    <div class="insight">
+    CHECKPOINT는 이벤트 참여 이후에도 사용자가 상품을 바로 판단하지 않고,
+    기초지수·구성종목·분배금·유의사항을 먼저 확인하도록 연결합니다.
+    </div>
+    </div>
+    """)
+
+    c1, c2 = st.columns(2)
+
+    with c1:
+        if st.button("신규상장 ETF 정보 확인", type="primary", use_container_width=True):
+            select_etf(event_etf["code"])
+
+    with c2:
+        if st.button("전체상품 보기", use_container_width=True):
+            go("products")
+
+    html("""
+    <div class="referral-card">
+    <div class="referral-title">친구 매수 인증 보상 구조</div>
+    <div class="point-desc">
+    공유받은 친구가 신규상장 ETF 정보를 확인하고, 본인 판단에 따라 매수 인증까지 완료하면
+    공유자에게 꽝 없는 응모권이 지급됩니다.<br><br>
+    ※ 프로토타입에서는 아래 버튼으로 친구 매수 인증 완료 상황을 시뮬레이션합니다.
+    </div>
+    </div>
+    """)
+
+    if st.button("프로토타입: 친구 매수 인증 완료 처리", use_container_width=True):
+        ok, msg = simulate_referral_buy_auth()
+
+        if ok:
+            st.success(msg)
+        else:
+            st.warning(msg)
+
+    html(f"""
+    <div class="info-card">
+    <div class="info-title">응모권 지급 기준</div>
+    <div class="event-rule-card">
+    <div class="event-rule-title">일반 응모권</div>
+    <div class="event-rule-desc">
+    투자 MBTI 결과 공유 시 지급 · 꽝 포함 · 이벤트 기간 최대 {EVENT_INFO["share_limit"]}장
+    </div>
+    </div>
+    <div class="event-rule-card">
+    <div class="event-rule-title">꽝 없는 응모권</div>
+    <div class="event-rule-desc">
+    공유받은 친구의 신규상장 ETF 매수 인증 완료 시 지급 · 꽝 없음 · 이벤트 기간 최대 {EVENT_INFO["premium_limit"]}장
+    </div>
+    </div>
+    <div class="note-text">
+    실제 서비스에서는 공유 링크 추적, 동일 계정 중복 방지, 매수 인증 API 또는 이벤트 인증 절차가 필요합니다.
+    </div>
+    </div>
+    """)
+
+    phone_footer()
+    bottom_nav("event_draw")
+
+
+# =========================
 # 12. 페이지: 전체상품
 # =========================
 def product_list_card(etf, pct=None, weak=None):
@@ -2213,10 +3065,13 @@ def product_list_card(etf, pct=None, weak=None):
     else:
         change_text = f"▼ {abs(etf['change']):,} ({abs(etf['change_pct']):.2f}%)"
 
+    event_badge = event_target_badge_html(etf)
+
     return f"""
     <div class="product-list-card">
     <div style="display:flex; justify-content:space-between; align-items:start; gap:10px;">
     <div>
+    {event_badge}
     <div class="product-name">{etf["name"]}</div>
     <div class="product-code">{etf["code"]}</div>
     </div>
@@ -2239,6 +3094,7 @@ def product_list_card(etf, pct=None, weak=None):
 def render_products():
     raw, pct, weak = safe_scores()
     df = load_etf_products()
+    event_etf = get_event_etf()
 
     phone_header()
 
@@ -2247,7 +3103,28 @@ def render_products():
     html(f"""
     <div class="search-box">🔍 &nbsp; 상품명 혹은 종목코드 검색</div>
     <div class="caption">최근 갱신 {now_text()} · 프로토타입 샘플 데이터</div>
+
+    <div class="event-product-card">
+    <div class="badge-red">EVENT 대상 신규상장 ETF</div>
+    <div class="event-product-title">{event_etf["name"]}</div>
+    <div class="product-code">{event_etf["code"]}</div>
+    <div class="product-meta">{event_etf["desc"]}</div>
+    <div class="insight">
+    이벤트 페이지에서 투자 MBTI 결과를 공유하면 일반 응모권을 받을 수 있고,
+    이 상품의 구조와 유의사항까지 이어서 확인할 수 있어요.
+    </div>
+    </div>
     """)
+
+    c1, c2 = st.columns(2)
+
+    with c1:
+        if st.button("이벤트 페이지", type="primary", use_container_width=True):
+            open_event_page()
+
+    with c2:
+        if st.button("이벤트 ETF 확인", use_container_width=True):
+            select_etf(event_etf["code"])
 
     c1, c2 = st.columns([1.5, 1])
 
@@ -2409,6 +3286,7 @@ def render_product_detail():
     <div class="purple-hero">
     <div style="display:flex; justify-content:space-between; gap:10px; align-items:flex-start;">
     <div>
+    {event_target_badge_html(etf)}
     <div class="badge-soft">{etf["region"]} · {etf["kind"]}</div>
     <div class="purple-title">{etf["name"]}</div>
     <div style="font-size:19px;font-weight:900;margin-bottom:12px;">{etf["code"]}</div>
@@ -2433,6 +3311,21 @@ def render_product_detail():
     </div>
     </div>
     """)
+
+    if etf.get("event_target"):
+        html("""
+        <div class="event-banner">
+        <div class="badge-soft">EVENT 대상</div>
+        <div class="event-title">이 상품은 신규상장 ETF<br>뽑기 이벤트 대상입니다</div>
+        <div class="event-desc">
+        투자 MBTI 결과를 이벤트 페이지에서 공유하고 응모권을 받은 뒤,
+        상품정보를 기준 있게 확인해보세요.
+        </div>
+        </div>
+        """)
+
+        if st.button("KODEX 뽑기 이벤트로 이동", type="primary", use_container_width=True):
+            open_event_page()
 
     fav_label = "♥ 찜 해제하기" if is_favorite(etf["code"]) else "♡ 관심 ETF 찜하기"
 
@@ -2501,6 +3394,10 @@ def render_insight():
     save_rate = round(st.session_state.mock_save_clicks / total * 100, 1)
     fav_rate = round(st.session_state.mock_favorite_clicks / total * 100, 1)
     product_rate = round(st.session_state.mock_product_clicks / total * 100, 1)
+    event_view_rate = round(st.session_state.mock_event_page_visits / total * 100, 1)
+    share_rate = round(st.session_state.mock_share_clicks / total * 100, 1)
+    draw_rate = round(st.session_state.mock_draw_plays / max(st.session_state.mock_general_tickets_issued, 1) * 100, 1)
+    referral_rate = round(st.session_state.mock_referral_buy_auth / max(st.session_state.mock_referral_visits, 1) * 100, 1)
 
     top_mbti = PARTICIPANT_MBTI_STATS[0]
     top_three = PARTICIPANT_MBTI_STATS[:3]
@@ -2521,12 +3418,12 @@ def render_insight():
     <div class="mini-kpi-label">최다 MBTI 비율</div>
     </div>
     <div class="mini-kpi">
-    <div class="mini-kpi-num">{fav_rate}%</div>
-    <div class="mini-kpi-label">찜 클릭률</div>
+    <div class="mini-kpi-num">{share_rate}%</div>
+    <div class="mini-kpi-label">결과 공유율</div>
     </div>
     <div class="mini-kpi">
-    <div class="mini-kpi-num">{product_rate}%</div>
-    <div class="mini-kpi-label">상품 상세 진입률</div>
+    <div class="mini-kpi-num">{referral_rate}%</div>
+    <div class="mini-kpi-label">매수 인증 전환율</div>
     </div>
     </div>
 
@@ -2534,20 +3431,66 @@ def render_insight():
     <div class="info-title">수집 가능한 지표</div>
     <div class="point-desc">
     · 전체 참여자 중 투자 MBTI 비율<br>
-    · 가장 많이 나온 투자 성향 유형<br>
-    · 가장 많이 놓친 ETF 확인 항목<br>
-    · 상품 상세페이지 클릭률<br>
-    · 수익률 탭 이동률<br>
-    · 구성종목 탭 이동률<br>
-    · 총보수 확인률<br>
-    · 찜 버튼 클릭률<br>
-    · 체크리스트 저장률
+    · 이벤트 페이지 진입률<br>
+    · 결과 공유 클릭률<br>
+    · 일반 응모권 지급 수<br>
+    · 뽑기 참여율<br>
+    · 공유 링크 유입 수<br>
+    · 신규상장 ETF 상품정보 진입률<br>
+    · 매수 인증 완료 수<br>
+    · 꽝 없는 응모권 지급 수<br>
+    · MBTI 유형별 공유율<br>
+    · MBTI 유형별 신규상장 ETF 관심도
     </div>
     </div>
 
     <div class="insight">
-    기업은 전체 참여자 중 어떤 투자 MBTI가 많은지 파악해 20대의 ETF 확인 성향을 이해할 수 있습니다.
-    예를 들어 트렌드 반응형이 많다면 수익률 중심 콘텐츠보다 구성종목·총보수·유의사항을 보완하는 콘텐츠가 필요합니다.
+    기업은 전체 참여자 중 어떤 투자 MBTI가 많은지뿐 아니라,
+    어떤 유형이 이벤트 페이지에 진입하고, 결과를 공유하고, 신규상장 ETF 정보 확인까지 이어지는지 파악할 수 있습니다.
+    </div>
+    """)
+
+    html("""
+    <div class="info-card">
+    <div class="info-title">이벤트 성과 지표</div>
+    <div class="point-desc">
+    프로토타입 예시 데이터입니다. 실제 서비스에서는 이벤트 로그와 공유 링크, 인증 데이터를 기반으로 자동 집계됩니다.
+    </div>
+    </div>
+    """)
+
+    html(event_metric_bar_html(
+        "이벤트 페이지 진입률",
+        min(event_view_rate, 100),
+        f"이벤트 페이지 방문 {st.session_state.mock_event_page_visits:,}회"
+    ))
+
+    html(event_metric_bar_html(
+        "투자 MBTI 결과 공유율",
+        min(share_rate, 100),
+        f"공유 클릭 {st.session_state.mock_share_clicks:,}회 · 일반 응모권 {st.session_state.mock_general_tickets_issued:,}장 지급"
+    ))
+
+    html(event_metric_bar_html(
+        "뽑기 참여율",
+        min(draw_rate, 100),
+        f"뽑기 참여 {st.session_state.mock_draw_plays:,}회"
+    ))
+
+    html(event_metric_bar_html(
+        "친구 매수 인증 전환율",
+        min(referral_rate, 100),
+        f"공유 링크 유입 {st.session_state.mock_referral_visits:,}회 · 매수 인증 {st.session_state.mock_referral_buy_auth:,}회"
+    ))
+
+    html(f"""
+    <div class="info-card">
+    <div class="info-title">응모권 지급 현황</div>
+    <div class="point-desc">
+    일반 응모권 지급 수: {st.session_state.mock_general_tickets_issued:,}장<br>
+    꽝 없는 응모권 지급 수: {st.session_state.mock_premium_tickets_issued:,}장<br>
+    신규상장 ETF 상품정보 진입 수: {st.session_state.mock_event_product_clicks:,}회
+    </div>
     </div>
     """)
 
@@ -2573,13 +3516,34 @@ def render_insight():
 
     st.bar_chart(chart_df)
 
+    html("""
+    <div class="info-card">
+    <div class="info-title">MBTI 유형별 이벤트 반응</div>
+    <div class="point-desc">
+    어떤 투자 성향이 공유를 많이 하고, 어떤 유형이 신규상장 ETF 확인과 매수 인증까지 이어지는지 비교할 수 있습니다.
+    </div>
+    </div>
+    """)
+
+    event_stats_df = pd.DataFrame(EVENT_MBTI_STATS)
+    st.dataframe(
+        event_stats_df.rename(columns={
+            "code": "투자 MBTI",
+            "share_rate": "공유율(%)",
+            "event_view_rate": "이벤트 진입률(%)",
+            "buy_auth_rate": "매수 인증률(%)",
+        }),
+        use_container_width=True,
+        hide_index=True,
+    )
+
     html(f"""
     <div class="info-card">
     <div class="info-title">기업 활용 해석 예시</div>
     {point_item("트렌드 반응형 비중 확인", f"{top_three[0]['code']}형이 {top_three[0]['pct']}%로 가장 높게 나타나면, 20대가 성장 테마와 수익률에 빠르게 반응한다는 인사이트를 얻을 수 있습니다.")}
-    {point_item("안정형·장기형 비중 확인", "SDLP, GDLP처럼 장기형 유형의 비율을 보면 장기 투자 콘텐츠 수요를 추정할 수 있습니다.")}
-    {point_item("찜 데이터와 결합", "투자 MBTI별로 어떤 KODEX ETF를 찜했는지 보면 성향별 관심 상품군을 파악할 수 있습니다.")}
-    {point_item("체크리스트 데이터와 결합", "사용자가 어떤 항목에서 낮은 점수를 보이는지 확인해 상품 상세 콘텐츠의 설명 순서를 개선할 수 있습니다.")}
+    {point_item("공유율과 이벤트 진입률 확인", "투자 MBTI 결과 공유율을 통해 20대가 어떤 유형의 결과를 친구에게 보여주고 싶어하는지 확인할 수 있습니다.")}
+    {point_item("신규상장 ETF 관심도 확인", "이벤트 대상 ETF의 상품정보 진입률을 보면 이벤트가 단순 참여에서 상품 확인 행동으로 이어졌는지 판단할 수 있습니다.")}
+    {point_item("응모권 구조 효과 확인", "일반 응모권과 꽝 없는 응모권의 사용률을 비교하면 공유 보상과 전환 보상의 차이를 분석할 수 있습니다.")}
     </div>
     """)
 
@@ -2596,7 +3560,9 @@ def render_insight():
         투자 MBTI: {invest["code"]} · {invest["title"]}<br>
         확인 유형: {habit["type"]} · {habit["mbti"]}<br>
         보완 항목: {missed}<br>
-        찜한 ETF: {favorites}
+        찜한 ETF: {favorites}<br>
+        보유 일반 응모권: {st.session_state.normal_tickets}장<br>
+        보유 꽝 없는 응모권: {st.session_state.premium_tickets}장
         </div>
         </div>
         """)
@@ -2614,6 +3580,8 @@ elif st.session_state.page == "checklist":
     render_checklist()
 elif st.session_state.page == "report":
     render_report()
+elif st.session_state.page == "event_draw":
+    render_event_draw()
 elif st.session_state.page == "products":
     render_products()
 elif st.session_state.page == "product_detail":
